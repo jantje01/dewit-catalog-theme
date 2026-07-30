@@ -15,6 +15,124 @@
 }());
 
 (function () {
+	const toggle = document.querySelector('.dewit-mobile-menu-toggle');
+	const menu = document.querySelector('#dewit-category-bar');
+
+	if (!toggle || !menu) {
+		return;
+	}
+
+	const closeMenu = function () {
+		document.body.classList.remove('dewit-mobile-menu-open');
+		toggle.setAttribute('aria-expanded', 'false');
+	};
+
+	toggle.addEventListener('click', function () {
+		const isOpen = document.body.classList.toggle('dewit-mobile-menu-open');
+		toggle.setAttribute('aria-expanded', String(isOpen));
+	});
+
+	menu.addEventListener('click', function (event) {
+		if (event.target.closest('a')) {
+			closeMenu();
+		}
+	});
+
+	document.addEventListener('click', function (event) {
+		if (!event.target.closest('.dewit-mobile-menu-toggle, #dewit-category-bar')) {
+			closeMenu();
+		}
+	});
+
+	document.addEventListener('keydown', function (event) {
+		if ('Escape' === event.key) {
+			closeMenu();
+		}
+	});
+}());
+
+(function () {
+	const trigger = document.querySelector('.dewit-mega-menu__trigger');
+	const item = document.querySelector('.dewit-mega-menu__products');
+	const panel = document.querySelector('#dewit-mega-menu-panel');
+
+	if (!trigger || !item || !panel) {
+		return;
+	}
+
+	const closeMenu = function () {
+		item.classList.remove('is-open');
+		trigger.setAttribute('aria-expanded', 'false');
+		panel.hidden = true;
+	};
+
+	trigger.addEventListener('click', function () {
+		const isOpen = item.classList.toggle('is-open');
+		trigger.setAttribute('aria-expanded', String(isOpen));
+		panel.hidden = !isOpen;
+	});
+
+	document.addEventListener('click', function (event) {
+		if (!item.contains(event.target)) {
+			closeMenu();
+		}
+	});
+
+	document.addEventListener('keydown', function (event) {
+		if ('Escape' === event.key) {
+			closeMenu();
+			trigger.focus();
+		}
+	});
+}());
+
+(function () {
+	const items = document.querySelectorAll('.dewit-category-bar__item.has-children');
+
+	if (!items.length) {
+		return;
+	}
+
+	const closeItems = function () {
+		items.forEach(function (item) {
+			item.classList.remove('is-open');
+			const button = item.querySelector('.dewit-category-bar__trigger');
+			if (button) {
+				button.setAttribute('aria-expanded', 'false');
+			}
+		});
+	};
+
+	items.forEach(function (item) {
+		const button = item.querySelector('.dewit-category-bar__trigger');
+
+		if (!button) {
+			return;
+		}
+
+		button.addEventListener('click', function (event) {
+			event.preventDefault();
+			const isOpen = item.classList.contains('is-open');
+			closeItems();
+			item.classList.toggle('is-open', !isOpen);
+			button.setAttribute('aria-expanded', String(!isOpen));
+		});
+	});
+
+	document.addEventListener('click', function (event) {
+		if (!event.target.closest('.dewit-category-bar')) {
+			closeItems();
+		}
+	});
+
+	document.addEventListener('keydown', function (event) {
+		if ('Escape' === event.key) {
+			closeItems();
+		}
+	});
+}());
+
+(function () {
 	let searchRequestController = null;
 	let searchDebounceTimer = null;
 	const productCardViewStorageKey = 'dewitProductCardViewV4';
@@ -74,7 +192,7 @@
 
 	function initFixedHeaderWheelScroll() {
 		const isNarrowViewport = window.matchMedia && window.matchMedia('(max-width: 766px)').matches;
-		const header = document.querySelector('.elementor-element-c385f59:not(.elementor-sticky__spacer), .site-header');
+		const header = document.querySelector('.site-header');
 
 		if (!isNarrowViewport || !header || header.dataset.dewitWheelScrollReady === 'true') {
 			return;
@@ -196,12 +314,12 @@
 			return;
 		}
 
-		sidebar.querySelectorAll('.custom-logo-link, .elementor-widget-theme-site-logo a, .elementor-widget-image a').forEach(function (link) {
+		sidebar.querySelectorAll('.custom-logo-link, .dewit-sidebar-logo-link').forEach(function (link) {
 			link.href = homeUrl;
 			link.setAttribute('aria-label', 'Terug naar hoofdcategorieën');
 		});
 
-		sidebar.querySelectorAll('.custom-logo, .elementor-widget-theme-site-logo img, .elementor-widget-image img').forEach(function (logo) {
+		sidebar.querySelectorAll('.custom-logo, .dewit-catalog-logo').forEach(function (logo) {
 			if (logo.closest('a')) {
 				logo.closest('a').href = homeUrl;
 				return;
@@ -409,8 +527,12 @@
 	}
 
 	function injectShopToolbar() {
-		const content = document.querySelector('.elementor-element-5c7860e');
-		const grid = content ? content.querySelector('.elementor-widget-loop-grid') : null;
+		if (document.querySelector('.dewit-catalog')) {
+			return;
+		}
+
+		const content = document.querySelector('.dewit-catalog__content');
+		const grid = content ? content.querySelector('.dewit-grouped-products') : null;
 
 		if (!content || !grid || content.querySelector('.dewit-shop-toolbar')) {
 			return;
@@ -504,22 +626,50 @@
 		injectProductViewSwitch(content, grid);
 	}
 
+	function initHeaderSearch() {
+		document.querySelectorAll('.catalog-header-search').forEach(function (form) {
+			if (form.dataset.liveSearchInitialized === 'true') {
+				return;
+			}
+
+			const input = form.querySelector('input[type="search"]');
+			const results = form.querySelector('.dewit-shop-search-results');
+
+			if (!input || !results) {
+				return;
+			}
+
+			form.dataset.liveSearchInitialized = 'true';
+			input.setAttribute('autocomplete', 'off');
+			input.setAttribute('aria-autocomplete', 'list');
+			input.addEventListener('input', function () {
+				updateLiveSearch(input, results);
+			});
+			input.addEventListener('focus', function () {
+				updateLiveSearch(input, results);
+			});
+			document.addEventListener('click', function (event) {
+				if (!form.contains(event.target)) {
+					clearLiveSearchResults(results);
+				}
+			});
+		});
+	}
+
 	if (document.readyState === 'loading') {
 		document.addEventListener('DOMContentLoaded', injectShopToolbar);
+		document.addEventListener('DOMContentLoaded', initHeaderSearch);
 		document.addEventListener('DOMContentLoaded', routeSidebarLogoToHome);
 		document.addEventListener('DOMContentLoaded', initPullRefreshGuard);
 		document.addEventListener('DOMContentLoaded', initFixedHeaderWheelScroll);
 	} else {
 		injectShopToolbar();
+		initHeaderSearch();
 		routeSidebarLogoToHome();
 		initPullRefreshGuard();
 		initFixedHeaderWheelScroll();
 	}
 
-	window.addEventListener('elementor/frontend/init', injectShopToolbar);
-	window.addEventListener('elementor/frontend/init', routeSidebarLogoToHome);
-	window.addEventListener('elementor/frontend/init', initPullRefreshGuard);
-	window.addEventListener('elementor/frontend/init', initFixedHeaderWheelScroll);
 	window.addEventListener('load', routeSidebarLogoToHome);
 	window.addEventListener('load', initPullRefreshGuard);
 	window.addEventListener('load', initFixedHeaderWheelScroll);
@@ -839,6 +989,10 @@
 	}
 
 	function renderServerGroupedProducts() {
+		if (document.querySelector('.dewit-catalog')) {
+			return;
+		}
+
 		const grouped = window.dewitGroupedCategory;
 
 		if (!grouped || !grouped.html) {
@@ -937,7 +1091,7 @@
 	}
 
 	function activateSidebarParentTrigger(trigger) {
-		const filter = trigger.closest('.e-filter');
+		const filter = trigger.closest('.dewit-category-filter');
 		const groupElement = trigger.closest('.dewit-category-group');
 
 		if (!filter || !groupElement) {
@@ -1081,10 +1235,8 @@
 		const buttons = Array.from(document.querySelectorAll('.dewit-category-toggle'));
 		const sidebar = document.getElementById('catalog-sidebar');
 		let headerToggle = document.querySelector('.dewit-header-category-toggle');
-		const productHeaderToggle = document.body.classList.contains('single-product') ? document.querySelector('.site-header .menu-toggle') : null;
-		const headerHost = document.querySelector('.elementor-element-c385f59.elementor-sticky--active:not(.elementor-sticky__spacer)') ||
-			document.querySelector('.elementor-element-c385f59:not(.elementor-sticky__spacer)') ||
-			document.querySelector('.site-header');
+		const productHeaderToggle = null;
+		const headerHost = document.querySelector('.site-header');
 
 		if (!sidebar) {
 			if (headerToggle && headerToggle.classList.contains('dewit-category-toggle-ready')) {
@@ -1189,7 +1341,6 @@
 		initServerGroupedProducts();
 	}
 
-	window.addEventListener('elementor/frontend/init', enhanceShopNavigation);
 	window.addEventListener('load', enhanceShopNavigation);
 	window.addEventListener('popstate', handleCategoryHistoryNavigation);
 	window.dewitGetActiveCategorySlug = getActiveCategorySlug;
@@ -1220,12 +1371,12 @@
 		const scope = root || document;
 		const cards = [];
 
-		if (scope.matches && scope.matches('.elementor-widget-loop-grid .e-loop-item.product')) {
+		if (scope.matches && scope.matches('.dewit-grouped-product-card')) {
 			cards.push(scope);
 		}
 
 		if (scope.querySelectorAll) {
-			scope.querySelectorAll('.elementor-widget-loop-grid .e-loop-item.product').forEach(function (card) {
+			scope.querySelectorAll('.dewit-grouped-product-card').forEach(function (card) {
 				cards.push(card);
 			});
 		}
@@ -1269,7 +1420,7 @@
 			.find(function (link) {
 				const href = link.getAttribute('href') || '';
 
-				return href && href !== '#' && href.indexOf('elementor-action') === -1;
+				return href && href !== '#';
 			});
 		const productId = getProductIdFromCard(card);
 
@@ -1283,7 +1434,7 @@
 	function getClosestProductCard(target) {
 		const element = target && target.nodeType === Node.ELEMENT_NODE ? target : target.parentElement;
 
-		return element ? element.closest('.elementor-widget-loop-grid .e-loop-item.product') : null;
+		return element ? element.closest('.dewit-grouped-product-card') : null;
 	}
 
 	function getProductIdFromCard(card) {
@@ -1323,11 +1474,15 @@
 	}
 
 	function watchProductGrid() {
+		if (document.querySelector('.dewit-catalog')) {
+			return;
+		}
+
 		if (document.querySelector('.dewit-grouped-products.is-visible')) {
 			return;
 		}
 
-		const containers = document.querySelectorAll('.elementor-widget-loop-grid .elementor-loop-container');
+		const containers = document.querySelectorAll('.dewit-grouped-products');
 
 		installProductCardClickDelegation();
 		prepareProductCards(document);
@@ -1363,7 +1518,6 @@
 		watchProductGrid();
 	}
 
-	window.addEventListener('elementor/frontend/init', watchProductGrid);
 	window.addEventListener('load', watchProductGrid);
 }());
 
@@ -1679,7 +1833,7 @@
 	}
 
 	function getFilterParamName(filter) {
-		const widget = filter.closest('.elementor-widget-taxonomy-filter');
+		const widget = filter.closest('.dewit-catalog-category-filter');
 		let loopId = '';
 		let taxonomy = 'product_cat';
 
@@ -1798,7 +1952,11 @@
 	}
 
 	function renderCategoryFilters(groups) {
-		const filters = document.querySelectorAll('.elementor-widget-taxonomy-filter .e-filter');
+		if (document.querySelector('.dewit-catalog-category-filter')) {
+			return;
+		}
+
+		const filters = document.querySelectorAll('.dewit-catalog-category-filter');
 
 		filters.forEach(function (filter) {
 			if (filter.classList.contains('dewit-category-dropdowns-ready')) {
@@ -1808,7 +1966,7 @@
 			let categorySwitchId = 0;
 			const items = Array.from(filter.children)
 				.filter(function (item) {
-					return item.classList && item.classList.contains('e-filter-item');
+					return item.classList && item.classList.contains('dewit-category-child');
 				})
 				.filter(function (item) {
 					const slug = item.getAttribute('data-filter') || '';
@@ -1938,14 +2096,18 @@
 	}
 
 	function revealCategoryFilters() {
-		document.querySelectorAll('#catalog-sidebar .elementor-widget-taxonomy-filter .e-filter')
+		document.querySelectorAll('#catalog-sidebar .dewit-catalog-category-filter')
 			.forEach(function (filter) {
 				filter.classList.add('dewit-category-dropdowns-ready');
 			});
 	}
 
 	function buildCategoryDropdowns() {
-		const filters = document.querySelectorAll('.elementor-widget-taxonomy-filter .e-filter');
+		if (document.querySelector('.dewit-catalog-category-filter')) {
+			return;
+		}
+
+		const filters = document.querySelectorAll('.dewit-catalog-category-filter');
 
 		if (!filters.length) {
 			return;
@@ -2292,6 +2454,5 @@
 		window.setTimeout(revealCategoryFilters, 700);
 	}
 
-	window.addEventListener('elementor/frontend/init', buildCategoryDropdowns);
 	window.addEventListener('load', revealCategoryFilters);
 }());

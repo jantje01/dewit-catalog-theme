@@ -9,10 +9,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'DEWIT_THEME_VERSION', '0.3.190' );
+define( 'DEWIT_THEME_VERSION', '0.3.195' );
 define( 'DEWIT_DEFAULT_PARENT_CATEGORY_SLUG', 'steigermateriaal' );
 define( 'DEWIT_SHOP_SOCIAL_IMAGE_URL', 'https://shop.dewitbouwmachines.nl/wp-content/uploads/2026/06/download.jpg' );
 define( 'DEWIT_THEME_LOGO_FILE', '/assets/images/dewit-logo.svg' );
+define( 'DEWIT_CATALOG_UI_ENABLED', false );
+
+require_once get_template_directory() . '/inc/helpers.php';
+require_once get_template_directory() . '/inc/setup.php';
+require_once get_template_directory() . '/inc/enqueue.php';
+require_once get_template_directory() . '/inc/catalog.php';
+
+function dewit_theme_is_catalog_ui_enabled(): bool {
+	return defined( 'DEWIT_CATALOG_UI_ENABLED' ) && DEWIT_CATALOG_UI_ENABLED;
+}
 
 function dewit_theme_get_shop_meta_description(): string {
 	return 'Bekijk het assortiment bouwmachines, bekisting, steigers, verbruiksmaterialen en ondersteuningsmateriaal van De Wit Bouwmachines. Wij hebben altijd de oplossing in huis.';
@@ -30,7 +40,7 @@ function dewit_theme_print_critical_font_style(): void {
 	?>
 	<style id="dewit-critical-font-css">
 		:root {
-			--dewit-system-font: ui-sans-serif, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+			--dewit-system-font: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 		}
 
 		html,
@@ -111,7 +121,7 @@ function dewit_theme_route_custom_logo_to_default_shop( string $html ): string {
 
 	return str_replace(
 		'href="' . esc_url( home_url( '/' ) ) . '"',
-		'href="' . esc_url( dewit_theme_get_default_shop_url() ) . '"',
+		'href="' . esc_url( home_url( '/' ) ) . '"',
 		$html
 	);
 }
@@ -313,121 +323,11 @@ function dewit_theme_should_render_shop_sidebar(): bool {
 	return is_active_sidebar( 'shop-sidebar' ) && ( $is_shop || $is_product_taxonomy || $is_product );
 }
 
-if ( ! function_exists( 'dewit_theme_setup' ) ) {
-	/**
-	 * Set up theme defaults and supported WordPress features.
-	 */
-	function dewit_theme_setup(): void {
-		load_theme_textdomain( 'dewit-theme-woocommerce', get_template_directory() . '/languages' );
-
-		add_theme_support( 'automatic-feed-links' );
-		add_theme_support( 'title-tag' );
-		add_theme_support( 'post-thumbnails' );
-		add_image_size( 'dewit_catalog_card', 480, 480, false );
-		add_theme_support( 'custom-logo', array(
-			'height'      => 80,
-			'width'       => 240,
-			'flex-height' => true,
-			'flex-width'  => true,
-		) );
-		add_theme_support( 'html5', array(
-			'comment-form',
-			'comment-list',
-			'gallery',
-			'caption',
-			'style',
-			'script',
-			'navigation-widgets',
-		) );
-		add_theme_support( 'align-wide' );
-		add_theme_support( 'editor-styles' );
-		add_editor_style( 'assets/css/theme.css' );
-
-		add_theme_support( 'woocommerce' );
-		add_theme_support( 'wc-product-gallery-lightbox' );
-		add_theme_support( 'wc-product-gallery-slider' );
-
-		register_nav_menus( array(
-			'primary' => __( 'Primary Menu', 'dewit-theme-woocommerce' ),
-			'footer'  => __( 'Footer Menu', 'dewit-theme-woocommerce' ),
-		) );
-	}
-}
-add_action( 'after_setup_theme', 'dewit_theme_setup' );
-
-/**
- * Set content width for embeds.
- */
-function dewit_theme_content_width(): void {
-	$GLOBALS['content_width'] = apply_filters( 'dewit_theme_content_width', 1200 );
-}
-add_action( 'after_setup_theme', 'dewit_theme_content_width', 0 );
-
-/**
- * Register widget areas.
- */
-function dewit_theme_widgets_init(): void {
-	register_sidebar( array(
-		'name'          => __( 'Sidebar', 'dewit-theme-woocommerce' ),
-		'id'            => 'sidebar-1',
-		'description'   => __( 'Add widgets here.', 'dewit-theme-woocommerce' ),
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
-	) );
-
-	register_sidebar( array(
-		'name'          => __( 'Shop Sidebar', 'dewit-theme-woocommerce' ),
-		'id'            => 'shop-sidebar',
-		'description'   => __( 'Filters and widgets for WooCommerce shop pages.', 'dewit-theme-woocommerce' ),
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
-	) );
-}
-add_action( 'widgets_init', 'dewit_theme_widgets_init' );
-
-/**
- * Return WooCommerce product category image data when a thumbnail is configured.
- *
- * @return array{src:string,width:int,height:int}|null
- */
-function dewit_theme_get_product_category_image_data( int $term_id ): ?array {
-	$thumbnail_id = absint( get_term_meta( $term_id, 'thumbnail_id', true ) );
-	$image_data   = $thumbnail_id ? wp_get_attachment_image_src( $thumbnail_id, 'woocommerce_thumbnail' ) : false;
-
-	if ( ! $image_data ) {
-		return null;
-	}
-
-	return array(
-		'src'    => $image_data[0],
-		'width'  => absint( $image_data[1] ),
-		'height' => absint( $image_data[2] ),
-	);
-}
-
-/**
- * Return the WooCommerce placeholder image data for category cards without an image.
- *
- * @return array{src:string,width:int,height:int}
- */
-function dewit_theme_get_placeholder_image_data(): array {
-	$src = function_exists( 'wc_placeholder_img_src' ) ? wc_placeholder_img_src( 'woocommerce_thumbnail' ) : '';
-
-	return array(
-		'src'    => $src,
-		'width'  => 300,
-		'height' => 300,
-	);
-}
-
 /**
  * Enqueue scripts and styles.
  */
-function dewit_theme_scripts(): void {
+if ( ! function_exists( 'dewit_theme_scripts' ) ) {
+	function dewit_theme_scripts(): void {
 	wp_enqueue_style(
 		'dewit-theme-woocommerce-style',
 		get_template_directory_uri() . '/assets/css/theme.css',
@@ -506,6 +406,7 @@ function dewit_theme_scripts(): void {
 			);
 		}
 	}
+    }
 }
 add_action( 'wp_enqueue_scripts', 'dewit_theme_scripts' );
 
@@ -513,7 +414,7 @@ add_action( 'wp_enqueue_scripts', 'dewit_theme_scripts' );
  * Apply the saved product card view before the main theme script runs.
  */
 function dewit_theme_print_early_product_view_mode(): void {
-	if ( '' === dewit_theme_get_current_parent_category_slug() || ( function_exists( 'is_product' ) && is_product() ) ) {
+	if ( ! dewit_theme_is_catalog_ui_enabled() || '' === dewit_theme_get_current_parent_category_slug() || ( function_exists( 'is_product' ) && is_product() ) ) {
 		return;
 	}
 	?>
@@ -751,7 +652,7 @@ add_action( 'wp_head', 'dewit_theme_preload_logo_asset', 1 );
  * Preload the first catalog product images so mobile LCP can start earlier.
  */
 function dewit_theme_preload_shop_lcp_images(): void {
-	if ( is_admin() || is_search() || ( function_exists( 'is_product' ) && is_product() ) ) {
+	if ( ! dewit_theme_is_catalog_ui_enabled() || is_admin() || is_search() || ( function_exists( 'is_product' ) && is_product() ) ) {
 		return;
 	}
 
@@ -835,6 +736,14 @@ function dewit_theme_get_default_parent_category_slug(): string {
 function dewit_theme_get_current_parent_category_slug(): string {
 	if ( isset( $_GET['dewit_parent_cat'] ) ) {
 		return sanitize_title( wp_unslash( $_GET['dewit_parent_cat'] ) );
+	}
+
+	if ( function_exists( 'is_product_category' ) && is_product_category() ) {
+		$queried_term = get_queried_object();
+
+		if ( $queried_term instanceof WP_Term && 'product_cat' === $queried_term->taxonomy ) {
+			return sanitize_title( $queried_term->slug );
+		}
 	}
 
 	return dewit_theme_get_default_parent_category_slug();
@@ -978,7 +887,7 @@ function dewit_theme_body_classes( array $classes ): array {
 		$classes[] = 'has-woocommerce';
 	}
 
-	if ( '' !== dewit_theme_get_current_parent_category_slug() && ! ( function_exists( 'is_product' ) && is_product() ) ) {
+	if ( dewit_theme_is_catalog_ui_enabled() && '' !== dewit_theme_get_current_parent_category_slug() && ! ( function_exists( 'is_product' ) && is_product() ) ) {
 		$classes[] = 'dewit-shop-grouped';
 	}
 
@@ -1017,6 +926,10 @@ add_action( 'elementor/frontend/container/before_render', 'dewit_theme_render_el
  * Put grouped products into Elementor's loop before the footer scripts run.
  */
 function dewit_theme_print_grouped_products_bootstrap(): void {
+	if ( ! dewit_theme_is_catalog_ui_enabled() ) {
+		return;
+	}
+
 	$parent_slug = dewit_theme_get_current_parent_category_slug();
 
 	if ( '' === $parent_slug || ( function_exists( 'is_product' ) && is_product() ) ) {
@@ -1108,6 +1021,10 @@ add_action( 'wp_head', 'dewit_theme_print_grouped_products_bootstrap', 1 );
  * can never be the only visible category navigation.
  */
 function dewit_theme_print_sidebar_category_fallback(): void {
+	if ( ! dewit_theme_is_catalog_ui_enabled() ) {
+		return;
+	}
+
 	if ( ! taxonomy_exists( 'product_cat' ) ) {
 		return;
 	}
@@ -1196,7 +1113,7 @@ function dewit_theme_print_sidebar_category_fallback(): void {
 		}
 
 		function render() {
-			const filter = document.querySelector('#catalog-sidebar .elementor-widget-taxonomy-filter .e-filter');
+			const filter = document.querySelector('#catalog-sidebar .dewit-catalog-category-filter, #catalog-sidebar .elementor-widget-taxonomy-filter .e-filter');
 
 			if (!filter || !Array.isArray(categories) || !categories.length) {
 				return;
@@ -1226,6 +1143,13 @@ function dewit_theme_print_sidebar_category_fallback(): void {
 
 			const activeParent = new URL(window.location.href).searchParams.get('dewit_parent_cat') || '';
 			filter.innerHTML = '';
+
+			const allLink = document.createElement('a');
+			allLink.className = 'dewit-category-trigger dewit-category-trigger--all';
+			allLink.href = getUrl('');
+			allLink.setAttribute('aria-pressed', activeParent ? 'false' : 'true');
+			appendCategoryTriggerContent(allLink, { name: 'Alle' });
+			filter.appendChild(allLink);
 
 			parents.forEach(function (category) {
 				const group = document.createElement('div');
@@ -1704,7 +1628,7 @@ function dewit_theme_render_grouped_category_products_html( string $slug ): stri
 			<?php $product_index = 0; ?>
 			<?php foreach ( $groups as $group ) : ?>
 				<section class="dewit-grouped-products__section" id="<?php echo esc_attr( 'dewit-cat-' . sanitize_html_class( $group['slug'] ) ); ?>" data-category-slug="<?php echo esc_attr( $group['slug'] ); ?>">
-					<h2 class="dewit-grouped-products__heading"><?php echo esc_html( $group['name'] ); ?></h2>
+					<?php if ( $group['slug'] !== $slug ) : ?><h2 class="dewit-grouped-products__heading"><?php echo esc_html( $group['name'] ); ?></h2><?php endif; ?>
 					<div class="dewit-grouped-products__grid<?php echo 1 === count( $group['products'] ) ? ' is-single' : ''; ?>">
 						<?php foreach ( $group['products'] as $product ) : ?>
 							<?php
@@ -1712,27 +1636,7 @@ function dewit_theme_render_grouped_category_products_html( string $slug ): stri
 							$is_lcp_candidate  = $product_index < 2;
 							$product_index++;
 							?>
-							<a class="dewit-grouped-product-card" style="--dewit-card-index: <?php echo esc_attr( min( $product_index - 1, 24 ) ); ?>;" href="<?php echo esc_url( $product['url'] ); ?>">
-								<span class="dewit-grouped-product-card__image">
-									<?php if ( $product['image'] ) : ?>
-										<img
-											src="<?php echo esc_url( $product['image'] ); ?>"
-											alt=""
-											width="<?php echo esc_attr( $product['image_width'] ); ?>"
-											height="<?php echo esc_attr( $product['image_height'] ); ?>"
-											<?php if ( $product['image_srcset'] ) : ?>srcset="<?php echo esc_attr( $product['image_srcset'] ); ?>"<?php endif; ?>
-											sizes="<?php echo esc_attr( $product['image_sizes'] ); ?>"
-											loading="<?php echo esc_attr( $is_priority_image ? 'eager' : 'lazy' ); ?>"
-											decoding="async"
-											fetchpriority="<?php echo esc_attr( $is_lcp_candidate ? 'high' : 'low' ); ?>"
-										>
-									<?php endif; ?>
-								</span>
-								<span class="dewit-grouped-product-card__body">
-									<span class="dewit-grouped-product-card__sku"><?php echo dewit_theme_render_non_linked_text( $product['sku'] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
-									<span class="dewit-grouped-product-card__title"><?php echo esc_html( $product['title'] ); ?></span>
-								</span>
-							</a>
+							<?php dewit_theme_render_catalog_product_card( $product, $product_index - 1, $is_lcp_candidate ); ?>
 						<?php endforeach; ?>
 					</div>
 				</section>

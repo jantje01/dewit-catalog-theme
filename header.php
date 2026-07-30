@@ -28,33 +28,37 @@
 				the_custom_logo();
 			} else {
 				?>
-				<a class="site-title" href="<?php echo esc_url( dewit_theme_get_default_shop_url() ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
-				<?php
+				<a class="site-title" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
+			<?php
 			}
 			?>
 		</div>
 
-		<button class="menu-toggle" type="button" aria-controls="primary-menu" aria-expanded="false">
-			<span class="menu-toggle__bar"></span>
-			<span class="screen-reader-text"><?php esc_html_e( 'Open menu', 'dewit-theme-woocommerce' ); ?></span>
+		<button class="dewit-mobile-menu-toggle" type="button" aria-controls="dewit-category-bar" aria-expanded="false">
+			<span class="screen-reader-text">Categorieën openen</span>
+			<span aria-hidden="true"></span>
+			<span aria-hidden="true"></span>
+			<span aria-hidden="true"></span>
 		</button>
 
-		<nav class="main-navigation" aria-label="<?php esc_attr_e( 'Primary menu', 'dewit-theme-woocommerce' ); ?>">
-			<?php
-			wp_nav_menu( array(
-				'theme_location' => 'primary',
-				'menu_id'        => 'primary-menu',
-				'container'      => false,
-				'fallback_cb'    => false,
-			) );
-			?>
-		</nav>
+		<form class="catalog-header-search" role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+			<label class="screen-reader-text" for="dewit-header-search"><?php esc_html_e( 'Zoeken naar producten', 'dewit-catalog-theme' ); ?></label>
+			<input id="dewit-header-search" type="search" name="s" placeholder="<?php esc_attr_e( 'Zoeken naar producten', 'dewit-catalog-theme' ); ?>" value="<?php echo esc_attr( get_search_query() ); ?>">
+			<input type="hidden" name="post_type" value="product">
+			<?php $header_parent_category = dewit_theme_get_current_parent_category_slug(); ?>
+			<?php if ( '' !== $header_parent_category ) : ?>
+				<input type="hidden" name="dewit_parent_cat" value="<?php echo esc_attr( $header_parent_category ); ?>">
+			<?php endif; ?>
+			<button type="submit" aria-label="<?php esc_attr_e( 'Zoeken', 'dewit-catalog-theme' ); ?>">
+				<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+			</button>
+			<div class="dewit-shop-search-results" role="region" aria-label="<?php esc_attr_e( 'Directe zoekresultaten', 'dewit-catalog-theme' ); ?>"></div>
+		</form>
 
-		<?php if ( class_exists( 'WooCommerce' ) ) : ?>
-			<a class="header-cart" href="<?php echo esc_url( wc_get_cart_url() ); ?>" aria-label="<?php esc_attr_e( 'View cart', 'dewit-theme-woocommerce' ); ?>">
-				<?php esc_html_e( 'Cart', 'dewit-theme-woocommerce' ); ?>
-				<span class="header-cart__count"><?php echo esc_html( WC()->cart ? WC()->cart->get_cart_contents_count() : 0 ); ?></span>
-			</a>
-		<?php endif; ?>
+		<a class="site-header__phone" href="tel:+31412634969" aria-label="0412 - 63 49 69">
+			<span aria-hidden="true">☎</span> 0412 - 63 49 69
+		</a>
+
 	</div>
 </header>
+<?php dewit_theme_render_category_bar(); ?>
