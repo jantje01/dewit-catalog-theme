@@ -71,14 +71,5 @@ function dewit_theme_widgets_init(): void {
 		'after_title'   => '</h2>',
 	) );
 
-	register_sidebar( array(
-		'name'          => __( 'Shop Sidebar', 'dewit-theme-woocommerce' ),
-		'id'            => 'shop-sidebar',
-		'description'   => __( 'Filters and widgets for WooCommerce shop pages.', 'dewit-theme-woocommerce' ),
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
-	) );
 }
 add_action( 'widgets_init', 'dewit_theme_widgets_init' );

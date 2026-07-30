@@ -315,14 +315,6 @@ function dewit_theme_filter_shop_document_title_text( string $title ): string {
 }
 add_filter( 'pre_get_document_title', 'dewit_theme_filter_shop_document_title_text', 20 );
 
-function dewit_theme_should_render_shop_sidebar(): bool {
-	$is_shop             = function_exists( 'is_shop' ) && is_shop();
-	$is_product_taxonomy = function_exists( 'is_product_taxonomy' ) && is_product_taxonomy();
-	$is_product          = function_exists( 'is_product' ) && is_product();
-
-	return is_active_sidebar( 'shop-sidebar' ) && ( $is_shop || $is_product_taxonomy || $is_product );
-}
-
 /**
  * Enqueue scripts and styles.
  */
@@ -1052,19 +1044,9 @@ function dewit_theme_print_sidebar_category_fallback(): void {
  */
 function dewit_theme_woocommerce_wrapper_start(): void {
 	echo '<main id="primary" class="site-main site-main--shop"><div class="container shop-layout">';
-
-	if ( dewit_theme_should_render_shop_sidebar() ) {
-		echo '<aside id="catalog-sidebar" class="shop-sidebar">';
-		dynamic_sidebar( 'shop-sidebar' );
-		echo '</aside><div class="shop-content">';
-	}
 }
 
 function dewit_theme_woocommerce_wrapper_end(): void {
-	if ( dewit_theme_should_render_shop_sidebar() ) {
-		echo '</div>';
-	}
-
 	echo '</div></main>';
 }
 
