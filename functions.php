@@ -52,7 +52,7 @@ function dewit_theme_print_critical_font_style(): void {
 			font-family: var(--dewit-system-font) !important;
 		}
 
-		html body :where(.elementor, .elementor-widget, .elementor-heading-title, .elementor-button, .elementor-item, .woocommerce, .woocommerce-loop-product__title, .product_title, [class^="dewit-"], [class*=" dewit-"]) {
+		html body :where(.woocommerce, .woocommerce-loop-product__title, .product_title, [class^="dewit-"], [class*=" dewit-"]) {
 			font-family: var(--dewit-system-font) !important;
 		}
 	</style>
@@ -410,50 +410,6 @@ if ( ! function_exists( 'dewit_theme_scripts' ) ) {
 }
 add_action( 'wp_enqueue_scripts', 'dewit_theme_scripts' );
 
-/**
- * Apply the saved product card view before the main theme script runs.
- */
-function dewit_theme_print_early_product_view_mode(): void {
-	if ( ! dewit_theme_is_catalog_ui_enabled() || '' === dewit_theme_get_current_parent_category_slug() || ( function_exists( 'is_product' ) && is_product() ) ) {
-		return;
-	}
-	?>
-	<style id="dewit-grouped-critical-css">
-	html.dewit-shop-grouped body.theme-dewit-theme-woocommerce.elementor-template-canvas .elementor-widget-loop-grid .elementor-loop-container > .e-loop-item.product,
-	body.theme-dewit-theme-woocommerce.elementor-template-canvas.dewit-shop-grouped .elementor-widget-loop-grid .elementor-loop-container > .e-loop-item.product,
-	html.dewit-shop-grouped body.theme-dewit-theme-woocommerce.elementor-template-canvas .elementor-widget-loop-grid .e-load-more-anchor,
-	html.dewit-shop-grouped body.theme-dewit-theme-woocommerce.elementor-template-canvas .elementor-widget-loop-grid .e-load-more-spinner,
-	html.dewit-shop-grouped body.theme-dewit-theme-woocommerce.elementor-template-canvas .elementor-widget-loop-grid .e-load-more-message,
-	body.theme-dewit-theme-woocommerce.elementor-template-canvas.dewit-shop-grouped .elementor-widget-loop-grid .e-load-more-anchor,
-	body.theme-dewit-theme-woocommerce.elementor-template-canvas.dewit-shop-grouped .elementor-widget-loop-grid .e-load-more-spinner,
-	body.theme-dewit-theme-woocommerce.elementor-template-canvas.dewit-shop-grouped .elementor-widget-loop-grid .e-load-more-message {
-		display: none !important;
-	}
-	</style>
-	<script>
-	(function () {
-		document.documentElement.classList.add('dewit-shop-grouped');
-
-		try {
-			var key = 'dewitProductCardViewV4';
-			var storedMode = window.localStorage ? window.localStorage.getItem(key) : '';
-			var mode = storedMode === 'horizontal' || storedMode === 'grid' || storedMode === 'table'
-				? storedMode
-				: (window.matchMedia && window.matchMedia('(min-width: 767px)').matches ? 'horizontal' : 'grid');
-
-			document.documentElement.classList.toggle('dewit-horizontal-product-cards', mode === 'horizontal');
-			document.documentElement.classList.toggle('dewit-table-product-cards', mode === 'table');
-		} catch (error) {
-			if (window.matchMedia && window.matchMedia('(min-width: 767px)').matches) {
-				document.documentElement.classList.add('dewit-horizontal-product-cards');
-			}
-		}
-	}());
-	</script>
-	<?php
-}
-add_action( 'wp_head', 'dewit_theme_print_early_product_view_mode', 0 );
-
 function dewit_theme_is_catalog_performance_context(): bool {
 	if ( is_admin() || is_search() || is_preview() || is_customize_preview() ) {
 		return false;
@@ -477,15 +433,6 @@ function dewit_theme_is_catalog_performance_context(): bool {
 		|| ( function_exists( 'is_shop' ) && is_shop() )
 		|| is_post_type_archive( 'product' );
 }
-
-function dewit_theme_disable_elementor_google_fonts( bool $print_google_fonts ): bool {
-	if ( ! is_admin() ) {
-		return false;
-	}
-
-	return $print_google_fonts;
-}
-add_filter( 'elementor/frontend/print_google_fonts', 'dewit_theme_disable_elementor_google_fonts', 20 );
 
 function dewit_theme_trim_catalog_frontend_assets(): void {
 	if ( ! dewit_theme_is_catalog_performance_context() ) {
@@ -896,129 +843,9 @@ function dewit_theme_body_classes( array $classes ): array {
 add_filter( 'body_class', 'dewit_theme_body_classes' );
 
 /**
- * Render the existing Elementor catalog container as the document main landmark.
+ * Legacy sidebar renderer retained for backwards compatibility.
  *
- * The live catalog is an Elementor Canvas page rather than a WooCommerce archive,
- * so the normal WooCommerce content wrappers are not called on this route.
- *
- * @param \Elementor\Element_Base $element Elementor container instance.
- */
-function dewit_theme_render_elementor_catalog_main( $element ): void {
-	$is_catalog_route = is_front_page() || isset( $_GET['dewit_parent_cat'] );
-
-	if (
-		! $is_catalog_route
-		|| ( function_exists( 'is_product' ) && is_product() )
-		|| '5c7860e' !== $element->get_id()
-	) {
-		return;
-	}
-
-	$element->set_settings( 'html_tag', 'main' );
-	$element->add_render_attribute( '_wrapper', array(
-		'id'    => 'primary',
-		'class' => 'site-main',
-	) );
-}
-add_action( 'elementor/frontend/container/before_render', 'dewit_theme_render_elementor_catalog_main', 5 );
-
-/**
- * Put grouped products into Elementor's loop before the footer scripts run.
- */
-function dewit_theme_print_grouped_products_bootstrap(): void {
-	if ( ! dewit_theme_is_catalog_ui_enabled() ) {
-		return;
-	}
-
-	$parent_slug = dewit_theme_get_current_parent_category_slug();
-
-	if ( '' === $parent_slug || ( function_exists( 'is_product' ) && is_product() ) ) {
-		return;
-	}
-
-	$html = dewit_theme_render_grouped_category_products_html( $parent_slug );
-
-	if ( '' === $html ) {
-		return;
-	}
-
-	$parent_term = get_term_by( 'slug', $parent_slug, 'product_cat' );
-	$label       = $parent_term instanceof WP_Term ? $parent_term->name : $parent_slug;
-	?>
-	<script id="dewit-grouped-products-bootstrap" data-no-defer="1">
-	(function () {
-		const grouped = <?php echo wp_json_encode( array(
-			'label' => $label,
-			'slug'  => $parent_slug,
-			'html'  => $html,
-		) ); ?>;
-
-		window.dewitGroupedCategory = grouped;
-		document.documentElement.classList.add('dewit-shop-grouped');
-
-		function markGroupedBody() {
-			if (document.body) {
-				document.body.classList.add('dewit-shop-grouped');
-			}
-		}
-
-		function renderGroupedProducts() {
-			const widget = document.querySelector('.elementor-widget-loop-grid');
-			const container = widget ? widget.querySelector('.elementor-loop-container') : null;
-
-			markGroupedBody();
-
-			if (!container || container.querySelector('.dewit-grouped-products')) {
-				return Boolean(container);
-			}
-
-			widget.classList.add('dewit-grouped-widget');
-			container.innerHTML = grouped.html;
-			container.classList.add('dewit-grouped-mode');
-			container.classList.remove('elementor-grid');
-			container.removeAttribute('role');
-			container.removeAttribute('aria-live');
-			container.removeAttribute('aria-label');
-
-			return true;
-		}
-
-		if (renderGroupedProducts()) {
-			return;
-		}
-
-		const observer = new MutationObserver(function () {
-			if (renderGroupedProducts()) {
-				observer.disconnect();
-			}
-		});
-
-		observer.observe(document.documentElement, {
-			childList: true,
-			subtree: true
-		});
-
-		if (document.readyState === 'loading') {
-			document.addEventListener('DOMContentLoaded', function () {
-				renderGroupedProducts();
-			}, { once: true });
-		} else {
-			window.setTimeout(renderGroupedProducts, 0);
-		}
-
-		window.addEventListener('load', function () {
-			renderGroupedProducts();
-			observer.disconnect();
-		}, { once: true });
-	}());
-	</script>
-	<?php
-}
-add_action( 'wp_head', 'dewit_theme_print_grouped_products_bootstrap', 1 );
-
-/**
- * Print a small independent sidebar renderer so Elementor's default "Alle" item
- * can never be the only visible category navigation.
+ * The Elementor-free catalog does not register or call this renderer.
  */
 function dewit_theme_print_sidebar_category_fallback(): void {
 	if ( ! dewit_theme_is_catalog_ui_enabled() ) {
@@ -1113,7 +940,7 @@ function dewit_theme_print_sidebar_category_fallback(): void {
 		}
 
 		function render() {
-			const filter = document.querySelector('#catalog-sidebar .dewit-catalog-category-filter, #catalog-sidebar .elementor-widget-taxonomy-filter .e-filter');
+			const filter = document.querySelector('#catalog-sidebar .dewit-catalog-category-filter');
 
 			if (!filter || !Array.isArray(categories) || !categories.length) {
 				return;
@@ -1220,8 +1047,6 @@ function dewit_theme_print_sidebar_category_fallback(): void {
 	</script>
 	<?php
 }
-add_action( 'wp_footer', 'dewit_theme_print_sidebar_category_fallback', 99 );
-
 /**
  * Customize WooCommerce wrappers to match the theme layout.
  */
