@@ -34,7 +34,6 @@ get_header();
 						<span aria-hidden="true">→</span>
 					</a>
 				</div>
-				<div class="dewit-home-hero__mark" aria-hidden="true">AW</div>
 			</section>
 
 			<section id="dewit-home-categories" class="dewit-home-categories" aria-labelledby="dewit-home-categories-title">

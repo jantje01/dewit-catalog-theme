@@ -88,14 +88,18 @@ img {
 
 .dewit-home-hero {
 	align-items: center;
-	background: var(--color-header-blue);
+	background-color: var(--color-header-blue);
+	background-image:
+		linear-gradient(90deg, rgba(0, 57, 101, .94) 0%, rgba(0, 57, 101, .78) 48%, rgba(0, 57, 101, .2) 100%),
+		url("../images/hero.jpeg");
+	background-position: center;
+	background-size: cover;
 	border-radius: 18px;
 	color: #fff;
 	display: grid;
-	gap: 32px;
-	grid-template-columns: minmax(0, 1.4fr) minmax(180px, .6fr);
+	grid-template-columns: minmax(0, 1fr);
 	margin-bottom: 56px;
-	min-height: 340px;
+	min-height: 420px;
 	overflow: hidden;
 	padding: clamp(32px, 6vw, 78px);
 	position: relative;
@@ -146,22 +150,6 @@ img {
 .dewit-home-hero__cta:hover {
 	background: #ffc13a;
 	color: #151515;
-}
-
-.dewit-home-hero__mark {
-	align-items: center;
-	border: 1px solid rgba(255, 255, 255, .22);
-	border-radius: 50%;
-	color: rgba(255, 255, 255, .15);
-	display: flex;
-	font-size: clamp(5rem, 14vw, 12rem);
-	font-weight: 900;
-	height: clamp(180px, 24vw, 320px);
-	justify-content: center;
-	justify-self: end;
-	line-height: 1;
-	transform: rotate(-12deg);
-	width: clamp(180px, 24vw, 320px);
 }
 
 .dewit-home-section-heading {
@@ -261,13 +249,13 @@ img {
 
 @media (max-width: 760px) {
 	.dewit-home-hero {
+		background-image:
+			linear-gradient(90deg, rgba(0, 57, 101, .94) 0%, rgba(0, 57, 101, .72) 100%),
+			url("../images/hero.jpeg");
+		background-position: 62% center;
 		grid-template-columns: 1fr;
 		margin-bottom: 40px;
-		min-height: 0;
-	}
-
-	.dewit-home-hero__mark {
-		display: none;
+		min-height: 380px;
 	}
 
 	.dewit-home-category-grid {
