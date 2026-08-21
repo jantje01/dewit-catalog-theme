@@ -1328,6 +1328,17 @@ body.single-product.dewit-mobile-filter-open .dewit-product__sidebar-close {
 	display: flex;
 }
 
+/* Never expose the product drawer from a stale body class alone. */
+body.single-product.dewit-mobile-filter-open:not([data-dewit-drawer-open="true"]) {
+	overflow: auto;
+}
+
+body.single-product.dewit-mobile-filter-open:not([data-dewit-drawer-open="true"]) #catalog-sidebar,
+body.single-product.dewit-mobile-filter-open:not([data-dewit-drawer-open="true"]) .dewit-category-overlay,
+body.single-product.dewit-mobile-filter-open:not([data-dewit-drawer-open="true"]) .dewit-product__sidebar-close {
+	display: none !important;
+}
+
 .entry-card,
 .entry-single,
 .entry-page,

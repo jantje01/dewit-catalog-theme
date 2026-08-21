@@ -1077,6 +1077,7 @@
 
 	function closeMobileCategories() {
 		document.body.classList.remove('dewit-mobile-filter-open');
+		document.body.removeAttribute('data-dewit-drawer-open');
 		document.querySelectorAll('.dewit-category-toggle, .dewit-header-category-toggle').forEach(function (button) {
 			button.setAttribute('aria-expanded', 'false');
 		});
@@ -1322,7 +1323,14 @@
 
 				event.preventDefault();
 
-				const isOpen = document.body.classList.toggle('dewit-mobile-filter-open');
+				const isOpen = !document.body.classList.contains('dewit-mobile-filter-open');
+
+				document.body.classList.toggle('dewit-mobile-filter-open', isOpen);
+				if (isOpen) {
+					document.body.setAttribute('data-dewit-drawer-open', 'true');
+				} else {
+					document.body.removeAttribute('data-dewit-drawer-open');
+				}
 
 				getMobileCategoryToggleButtons().forEach(function (button) {
 					button.setAttribute('aria-expanded', String(isOpen));
