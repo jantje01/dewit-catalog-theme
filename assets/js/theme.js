@@ -1082,6 +1082,10 @@
 		});
 	}
 
+	// A restored mobile page can retain the open class through the browser's
+	// back/forward cache. Product pages must always start with the drawer shut.
+	window.addEventListener('pageshow', closeMobileCategories);
+
 	function getParentCategorySlugFromTrigger(trigger) {
 		try {
 			return new URL(trigger.href, window.location.href).searchParams.get('dewit_parent_cat') || '';
@@ -1270,6 +1274,11 @@
 	}
 
 	function injectMobileCategoryControls() {
+		if (!document.body.classList.contains('dewit-mobile-filter-initialized')) {
+			document.body.classList.add('dewit-mobile-filter-initialized');
+			closeMobileCategories();
+		}
+
 		const toggles = getMobileCategoryToggleButtons();
 
 		if (!toggles.length) {
