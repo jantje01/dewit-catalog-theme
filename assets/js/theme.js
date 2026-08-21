@@ -1297,6 +1297,14 @@
 		if (!document.body.classList.contains('dewit-category-toggle-delegation-ready')) {
 			document.body.classList.add('dewit-category-toggle-delegation-ready');
 			document.addEventListener('click', function (event) {
+				const closeButton = event.target.closest('.dewit-product__sidebar-close');
+
+				if (closeButton) {
+					event.preventDefault();
+					closeMobileCategories();
+					return;
+				}
+
 				const toggle = event.target.closest('.dewit-category-toggle, .dewit-header-category-toggle');
 
 				if (!toggle || !document.getElementById('catalog-sidebar')) {
@@ -1309,6 +1317,7 @@
 
 				getMobileCategoryToggleButtons().forEach(function (button) {
 					button.setAttribute('aria-expanded', String(isOpen));
+					button.setAttribute('aria-label', isOpen ? 'Categorieën sluiten' : 'Categorieën openen');
 				});
 			});
 		}

@@ -1317,6 +1317,29 @@ body.single-product.dewit-mobile-filter-open #catalog-sidebar {
 	z-index: 1001;
 }
 
+.dewit-product__sidebar-close {
+	align-items: center;
+	background: #fff;
+	border: 0;
+	border-radius: 999px;
+	color: #003965;
+	cursor: pointer;
+	display: none;
+	font-size: 2rem;
+	height: 44px;
+	justify-content: center;
+	line-height: 1;
+	position: absolute;
+	right: 14px;
+	top: 14px;
+	width: 44px;
+	z-index: 2;
+}
+
+body.single-product.dewit-mobile-filter-open .dewit-product__sidebar-close {
+	display: flex;
+}
+
 .entry-card,
 .entry-single,
 .entry-page,

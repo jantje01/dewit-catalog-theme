@@ -11,6 +11,9 @@ defined( 'ABSPATH' ) || exit;
 <main id="primary" class="site-main dewit-product-page">
 	<div class="dewit-product-page__layout">
 		<aside id="catalog-sidebar" class="shop-sidebar dewit-product__sidebar">
+			<button class="dewit-product__sidebar-close" type="button" aria-label="<?php esc_attr_e( 'Categorieën sluiten', 'dewit-catalog-theme' ); ?>">
+				<span aria-hidden="true">&times;</span>
+			</button>
 			<a class="dewit-sidebar-logo-link dewit-product__sidebar-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="<?php esc_attr_e( 'Terug naar de homepage', 'dewit-theme-woocommerce' ); ?>">
 				<?php echo dewit_theme_get_logo_markup(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 			</a>
