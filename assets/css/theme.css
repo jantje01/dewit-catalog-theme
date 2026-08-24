@@ -1503,8 +1503,13 @@ body.single-product.dewit-mobile-filter-open:not([data-dewit-drawer-open="true"]
 }
 
 .site-footer .site-footer__phone {
+	color: #151515;
 	justify-self: start;
 	margin-top: 14px;
+}
+
+.site-footer .site-footer__phone:hover {
+	color: #151515;
 }
 
 .site-footer__hours table {
