@@ -4949,6 +4949,18 @@ body.woocommerce-page .site-header .site-header__mega-menu {
 	text-decoration: none;
 }
 
+.dewit-category-bar__panel-inner > ul > li > ul {
+	list-style: none;
+	margin: 0 0 4px 12px;
+	padding: 0;
+}
+
+.dewit-category-bar__panel-inner > ul > li > ul li a {
+	border-left-color: #e8ecef;
+	font-size: .74rem;
+	padding-block: 4px;
+}
+
 .dewit-category-bar__panel-inner > ul li a:hover,
 .dewit-category-bar__panel-heading a:hover {
 	color: #f4a900;

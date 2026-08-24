@@ -101,6 +101,52 @@ function dewit_theme_render_catalog_mega_menu(): void {
 }
 
 /**
+ * Render category-bar children recursively.
+ */
+function dewit_theme_render_category_bar_children( int $parent_id ): void {
+	$children = get_terms(
+		array(
+			'taxonomy'   => 'product_cat',
+			'parent'     => $parent_id,
+			'hide_empty' => true,
+			'orderby'    => 'name',
+			'order'      => 'ASC',
+		)
+	);
+
+	if ( is_wp_error( $children ) || empty( $children ) ) {
+		return;
+	}
+
+	foreach ( $children as $child ) {
+		$child_url = get_term_link( $child );
+
+		if ( is_wp_error( $child_url ) ) {
+			continue;
+		}
+
+		$grandchildren = get_terms(
+			array(
+				'taxonomy'   => 'product_cat',
+				'parent'     => $child->term_id,
+				'hide_empty' => true,
+				'fields'     => 'ids',
+			)
+		);
+		?>
+		<li>
+			<a href="<?php echo esc_url( $child_url ); ?>"><?php echo esc_html( $child->name ); ?></a>
+			<?php if ( ! is_wp_error( $grandchildren ) && ! empty( $grandchildren ) ) : ?>
+				<ul>
+					<?php dewit_theme_render_category_bar_children( $child->term_id ); ?>
+				</ul>
+			<?php endif; ?>
+		</li>
+		<?php
+	}
+}
+
+/**
  * Render the compact white category bar below the global header.
  */
 function dewit_theme_render_category_bar(): void {
@@ -155,12 +201,9 @@ function dewit_theme_render_category_bar(): void {
 									<div class="dewit-category-bar__panel-heading">
 										<a href="<?php echo esc_url( $parent_url ); ?>"><?php echo esc_html( $parent->name ); ?> <b aria-hidden="true">↗</b></a>
 									</div>
-									<ul>
-										<?php foreach ( $children as $child ) : ?>
-											<?php $child_url = get_term_link( $child ); ?>
-											<?php if ( ! is_wp_error( $child_url ) ) : ?><li><a href="<?php echo esc_url( $child_url ); ?>"><?php echo esc_html( $child->name ); ?></a></li><?php endif; ?>
-										<?php endforeach; ?>
-									</ul>
+							<ul>
+								<?php dewit_theme_render_category_bar_children( $parent->term_id ); ?>
+							</ul>
 								</div>
 							</div>
 						<?php endif; ?>
