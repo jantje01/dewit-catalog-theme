@@ -1475,9 +1475,10 @@ body.single-product.dewit-mobile-filter-open:not([data-dewit-drawer-open="true"]
 }
 
 .site-footer__brand > strong {
-	font-size: clamp(1.4rem, 3vw, 2rem);
+	font-size: clamp(1.15rem, 2vw, 1.5rem);
 	letter-spacing: -.04em;
 	line-height: 1.05;
+	white-space: nowrap;
 }
 
 .site-footer__cta {
@@ -1580,6 +1581,10 @@ body.single-product.dewit-mobile-filter-open:not([data-dewit-drawer-open="true"]
 		border-right: 0;
 		padding-bottom: 28px;
 		padding-right: 0;
+	}
+
+	.site-footer__brand > strong {
+		white-space: normal;
 	}
 
 	.site-footer__bottom {
