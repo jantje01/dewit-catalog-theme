@@ -27,6 +27,12 @@
 		toggle.setAttribute('aria-expanded', 'false');
 	};
 
+	if (document.body.classList.contains('single-product')) {
+		closeMenu();
+	}
+
+	window.addEventListener('pageshow', closeMenu);
+
 	toggle.addEventListener('click', function () {
 		const isOpen = document.body.classList.toggle('dewit-mobile-menu-open');
 		toggle.setAttribute('aria-expanded', String(isOpen));
