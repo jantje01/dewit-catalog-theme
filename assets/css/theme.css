@@ -531,6 +531,7 @@ body.dewit-shop-grouped .site-header {
 	border: 1px solid #dedee2;
 	border-radius: 14px;
 	display: flex;
+	height: 48px;
 	min-width: 0;
 	overflow: visible;
 	position: relative;
@@ -1031,6 +1032,7 @@ body.dewit-shop-grouped .dewit-catalog-view-switch button.is-active {
 }
 
 .site-branding .custom-logo {
+	display: block;
 	height: auto;
 	max-height: 38px;
 	width: auto;
@@ -4874,7 +4876,7 @@ body.woocommerce-page .site-header .site-header__mega-menu {
 	background: #fff;
 	border-bottom: 1px solid #d7dce1;
 	position: sticky;
-	top: 64px;
+	top: 80px;
 	z-index: 49;
 }
 
