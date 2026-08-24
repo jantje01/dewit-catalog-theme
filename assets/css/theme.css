@@ -5114,7 +5114,15 @@ body.woocommerce-page .dewit-category-bar__panel-inner {
 		z-index: 49;
 	}
 
+	body.single-product .dewit-category-bar {
+		display: none;
+	}
+
 	body.dewit-mobile-menu-open .dewit-category-bar {
+		display: block;
+	}
+
+	body.single-product.dewit-mobile-menu-open .dewit-category-bar {
 		display: block;
 	}
 
