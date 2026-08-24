@@ -91,7 +91,11 @@ img {
 	background-color: var(--color-header-blue);
 	background-image:
 		linear-gradient(90deg, rgba(0, 57, 101, .84) 0%, rgba(0, 57, 101, .62) 48%, rgba(0, 57, 101, .08) 100%),
-		url("../images/hero.jpeg");
+		image-set(
+			url("../images/hero.avif") type("image/avif"),
+			url("../images/hero.webp") type("image/webp"),
+			url("../images/hero.jpeg") type("image/jpeg")
+		);
 	background-position: center;
 	background-size: cover;
 	border-radius: 18px;
@@ -274,7 +278,11 @@ img {
 	.dewit-home-hero {
 		background-image:
 			linear-gradient(90deg, rgba(0, 57, 101, .86) 0%, rgba(0, 57, 101, .58) 100%),
-			url("../images/hero.jpeg");
+			image-set(
+				url("../images/hero.avif") type("image/avif"),
+				url("../images/hero.webp") type("image/webp"),
+				url("../images/hero.jpeg") type("image/jpeg")
+			);
 		background-position: 62% center;
 		grid-template-columns: 1fr;
 		margin-bottom: 40px;
