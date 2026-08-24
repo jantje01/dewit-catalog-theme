@@ -1009,10 +1009,12 @@ body.dewit-shop-grouped .dewit-catalog-view-switch button.is-active {
 
 .site-header__inner {
 	align-items: center;
+	box-sizing: border-box;
 	display: grid;
 	gap: 20px;
 	grid-template-columns: auto 1fr auto;
-	min-height: 64px;
+	height: 80px;
+	min-height: 80px;
 	padding-block: 8px;
 	position: relative;
 }
@@ -4806,6 +4808,11 @@ body.single-product .dewit-product-page__layout {
 }
 
 @media (max-width: 900px) {
+	.site-header__inner {
+		height: 64px;
+		min-height: 64px;
+	}
+
 	.site-header__inner {
 		grid-template-columns: auto 1fr auto;
 	}
