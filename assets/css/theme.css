@@ -253,6 +253,10 @@ img {
 	color: var(--color-header-blue);
 }
 
+.dewit-home-subcategory-list > li > a {
+	font-weight: 700;
+}
+
 .dewit-home-subcategory-list ul {
 	border-top: 1px solid #eeeeee;
 	list-style: none;
@@ -263,6 +267,7 @@ img {
 .dewit-home-subcategory-list ul a {
 	color: #7b858c;
 	font-size: .76rem;
+	font-weight: 500;
 	padding-block: 5px;
 }
 
