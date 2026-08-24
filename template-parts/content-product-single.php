@@ -58,7 +58,7 @@ defined( 'ABSPATH' ) || exit;
 					<?php $breadcrumb_url = get_term_link( $breadcrumb_item ); ?>
 					<?php if ( ! is_wp_error( $breadcrumb_url ) ) : ?>
 						<a href="<?php echo esc_url( $breadcrumb_url ); ?>"><?php echo esc_html( $breadcrumb_item->name ); ?></a>
-						<span aria-hidden="true">/</span>
+						<?php if ( $index < count( $breadcrumb_chain ) - 1 ) : ?><span aria-hidden="true">/</span><?php endif; ?>
 					<?php endif; ?>
 				<?php endforeach; ?>
 			</nav>
