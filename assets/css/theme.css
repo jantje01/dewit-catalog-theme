@@ -1025,8 +1025,8 @@ body.dewit-shop-grouped .dewit-catalog-view-switch button.is-active {
 	display: grid;
 	gap: 20px;
 	grid-template-columns: auto 1fr auto;
-	height: 80px;
-	min-height: 80px;
+	height: 72px;
+	min-height: 72px;
 	padding-block: 8px;
 	position: relative;
 }
@@ -5001,7 +5001,7 @@ body.woocommerce-page .site-header .site-header__mega-menu {
 	background: #fff;
 	border-bottom: 1px solid #d7dce1;
 	position: sticky;
-	top: 80px;
+	top: 72px;
 	z-index: 49;
 }
 
