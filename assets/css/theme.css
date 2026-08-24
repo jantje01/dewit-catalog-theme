@@ -185,6 +185,7 @@ img {
 	border: 0;
 	color: var(--color-ink);
 	display: grid;
+	align-items: center;
 	grid-template-columns: minmax(0, 1fr) auto;
 	padding: 22px 20px;
 	position: relative;
@@ -211,11 +212,10 @@ img {
 }
 
 .dewit-home-category-card strong {
-	align-self: center;
 	color: var(--color-header-blue);
 	font-size: 1.25rem;
 	grid-column: 2;
-	grid-row: 1 / span 2;
+	grid-row: 1;
 }
 
 .dewit-home-category-group > .dewit-home-category-card strong {
