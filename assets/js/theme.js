@@ -1251,6 +1251,16 @@
 			return buttons;
 		}
 
+		if (document.body.classList.contains('single-product') && !sidebar.querySelector('.dewit-product__sidebar-close')) {
+			const closeButton = document.createElement('button');
+
+			closeButton.className = 'dewit-product__sidebar-close';
+			closeButton.type = 'button';
+			closeButton.setAttribute('aria-label', 'Categorieën sluiten');
+			closeButton.innerHTML = '<span aria-hidden="true">&times;</span>';
+			sidebar.insertBefore(closeButton, sidebar.firstChild);
+		}
+
 		if (!headerToggle && productHeaderToggle) {
 			headerToggle = productHeaderToggle;
 		}
