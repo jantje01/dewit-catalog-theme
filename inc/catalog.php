@@ -66,15 +66,6 @@ function dewit_theme_render_catalog_mega_menu(): void {
 					<div class="dewit-mega-menu__columns">
 						<?php foreach ( $parents as $parent ) : ?>
 							<?php
-							$children = get_terms(
-								array(
-									'taxonomy'   => 'product_cat',
-									'parent'     => $parent->term_id,
-									'hide_empty' => false,
-									'orderby'    => 'name',
-									'order'      => 'ASC',
-								)
-							);
 							$parent_url = get_term_link( $parent );
 							if ( is_wp_error( $parent_url ) ) {
 								$parent_url = dewit_theme_get_default_shop_url() . '?dewit_parent_cat=' . rawurlencode( $parent->slug );
@@ -82,13 +73,10 @@ function dewit_theme_render_catalog_mega_menu(): void {
 							?>
 							<div class="dewit-mega-menu__column">
 								<a class="dewit-mega-menu__column-title" href="<?php echo esc_url( $parent_url ); ?>"><?php echo esc_html( $parent->name ); ?><span aria-hidden="true">↗</span></a>
-								<?php if ( ! is_wp_error( $children ) && $children ) : ?>
+								<?php if ( get_terms( array( 'taxonomy' => 'product_cat', 'parent' => $parent->term_id, 'hide_empty' => true, 'fields' => 'ids' ) ) ) : ?>
 								<ul>
-									<?php foreach ( $children as $child ) : ?>
-										<?php $child_url = get_term_link( $child ); ?>
-										<?php if ( ! is_wp_error( $child_url ) ) : ?><li><a href="<?php echo esc_url( $child_url ); ?>"><?php echo esc_html( $child->name ); ?></a></li><?php endif; ?>
-										<?php endforeach; ?>
-									</ul>
+									<?php dewit_theme_render_mega_menu_children( $parent->term_id ); ?>
+								</ul>
 								<?php endif; ?>
 							</div>
 						<?php endforeach; ?>
@@ -144,6 +132,41 @@ function dewit_theme_render_category_bar_children( int $parent_id ): void {
 		</li>
 		<?php
 	}
+}
+
+function dewit_theme_render_mega_menu_children( int $parent_id ): void {
+	$children = get_terms( array(
+		'taxonomy'   => 'product_cat',
+		'parent'     => $parent_id,
+		'hide_empty' => true,
+		'orderby'    => 'name',
+		'order'      => 'ASC',
+	) );
+
+	if ( is_wp_error( $children ) || empty( $children ) ) {
+		return;
+	}
+
+	foreach ( $children as $child ) :
+		$child_url = get_term_link( $child );
+		if ( is_wp_error( $child_url ) ) {
+			continue;
+		}
+		$grandchildren = get_terms( array(
+			'taxonomy'   => 'product_cat',
+			'parent'     => $child->term_id,
+			'hide_empty' => true,
+			'fields'     => 'ids',
+		) );
+		?>
+		<li>
+			<a href="<?php echo esc_url( $child_url ); ?>"><?php echo esc_html( $child->name ); ?></a>
+			<?php if ( ! is_wp_error( $grandchildren ) && ! empty( $grandchildren ) ) : ?>
+				<ul><?php dewit_theme_render_mega_menu_children( $child->term_id ); ?></ul>
+			<?php endif; ?>
+		</li>
+		<?php
+	endforeach;
 }
 
 /**

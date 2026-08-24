@@ -4919,6 +4919,31 @@ body.single-product .dewit-product-page__layout {
 	text-decoration: none;
 }
 
+/* Keep the mega-menu hierarchy aligned with the catalog cards. */
+.dewit-mega-menu__column > ul > li > a {
+	color: #003965;
+	font-weight: 700;
+}
+
+.dewit-mega-menu__column > ul > li:has(> ul) {
+	margin-bottom: 10px;
+}
+
+.dewit-mega-menu__column > ul > li > ul {
+	margin: 5px 0 0;
+	padding-left: 14px;
+}
+
+.dewit-mega-menu__column > ul > li > ul > li + li {
+	margin-top: 6px;
+}
+
+.dewit-mega-menu__column > ul > li > ul a {
+	color: #7b858c;
+	font-size: .78rem;
+	font-weight: 500;
+}
+
 .dewit-mega-menu__column li a:hover,
 .dewit-mega-menu__column-title:hover,
 .dewit-mega-menu__panel-heading > a:hover {
