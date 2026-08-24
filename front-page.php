@@ -53,6 +53,40 @@ get_header();
 						)
 					);
 					if ( ! is_wp_error( $home_categories ) ) :
+						$render_home_children = function ( int $parent_id ) use ( &$render_home_children ): void {
+							$children = get_terms( array(
+								'taxonomy'   => 'product_cat',
+								'parent'     => $parent_id,
+								'hide_empty' => true,
+								'orderby'    => 'name',
+								'order'      => 'ASC',
+							) );
+
+							if ( is_wp_error( $children ) || empty( $children ) ) {
+								return;
+							}
+
+							foreach ( $children as $child ) :
+								$child_url = get_term_link( $child );
+								if ( is_wp_error( $child_url ) ) {
+									continue;
+								}
+								$grandchildren = get_terms( array(
+									'taxonomy'   => 'product_cat',
+									'parent'     => $child->term_id,
+									'hide_empty' => true,
+									'fields'     => 'ids',
+								) );
+								?>
+								<li>
+									<a href="<?php echo esc_url( $child_url ); ?>"><span><?php echo esc_html( $child->name ); ?></span></a>
+									<?php if ( ! is_wp_error( $grandchildren ) && ! empty( $grandchildren ) ) : ?>
+										<ul><?php $render_home_children( $child->term_id ); ?></ul>
+									<?php endif; ?>
+								</li>
+								<?php
+							endforeach;
+						};
 						foreach ( $home_categories as $category ) :
 							if ( 'alle' === strtolower( (string) $category->slug ) || 'alle' === strtolower( (string) $category->name ) ) {
 								continue;
@@ -76,12 +110,7 @@ get_header();
 			</a>
 			<?php if ( ! is_wp_error( $subcategories ) && $subcategories ) : ?>
 				<ul class="dewit-home-subcategory-list">
-					<?php foreach ( $subcategories as $subcategory ) : ?>
-						<?php $subcategory_url = get_term_link( $subcategory ); ?>
-						<?php if ( ! is_wp_error( $subcategory_url ) ) : ?>
-							<li><a href="<?php echo esc_url( $subcategory_url ); ?>"><span><?php echo esc_html( $subcategory->name ); ?></span></a></li>
-						<?php endif; ?>
-					<?php endforeach; ?>
+					<?php $render_home_children( $category->term_id ); ?>
 				</ul>
 			<?php endif; ?>
 			</div>

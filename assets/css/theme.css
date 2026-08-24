@@ -164,7 +164,7 @@ img {
 
 .dewit-home-category-grid {
 	display: grid;
-	gap: 1px;
+	gap: 16px;
 	grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
@@ -186,6 +186,12 @@ img {
 	transition: background .18s ease, color .18s ease;
 }
 
+.dewit-home-category-group > .dewit-home-category-card {
+	background: var(--color-header-blue);
+	color: #fff;
+	padding-block: 16px;
+}
+
 .dewit-home-category-card span {
 	font-size: 1rem;
 	font-weight: 800;
@@ -204,6 +210,10 @@ img {
 	font-size: 1.25rem;
 	grid-column: 2;
 	grid-row: 1 / span 2;
+}
+
+.dewit-home-category-group > .dewit-home-category-card strong {
+	color: var(--color-accent);
 }
 
 .dewit-home-category-card:hover {
@@ -235,6 +245,19 @@ img {
 
 .dewit-home-subcategory-list a:hover {
 	color: var(--color-header-blue);
+}
+
+.dewit-home-subcategory-list ul {
+	border-top: 1px solid #eeeeee;
+	list-style: none;
+	margin: 0;
+	padding: 0 0 0 14px;
+}
+
+.dewit-home-subcategory-list ul a {
+	color: #7b858c;
+	font-size: .76rem;
+	padding-block: 5px;
 }
 
 .dewit-home-subcategory-list small {
