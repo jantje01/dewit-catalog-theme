@@ -587,6 +587,18 @@ function dewit_theme_preload_logo_asset(): void {
 }
 add_action( 'wp_head', 'dewit_theme_preload_logo_asset', 1 );
 
+function dewit_theme_preload_font_asset(): void {
+	if ( is_admin() ) {
+		return;
+	}
+
+	printf(
+		'<link rel="preload" as="font" href="%s" type="font/woff2" crossorigin>' . "\n",
+		esc_url( get_template_directory_uri() . '/assets/fonts/InterVariable.woff2' )
+	);
+}
+add_action( 'wp_head', 'dewit_theme_preload_font_asset', 1 );
+
 /**
  * Preload the first catalog product images so mobile LCP can start earlier.
  */
