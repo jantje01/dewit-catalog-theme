@@ -61,7 +61,6 @@ defined( 'ABSPATH' ) || exit;
 						<span aria-hidden="true">/</span>
 					<?php endif; ?>
 				<?php endforeach; ?>
-				<span class="dewit-product-breadcrumb__current" aria-current="page"><?php the_title(); ?></span>
 			</nav>
 			<?php wc_print_notices(); ?>
 			<article id="product-<?php the_ID(); ?>" <?php wc_product_class( 'dewit-product', $product ); ?>>
