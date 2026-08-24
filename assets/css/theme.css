@@ -1502,6 +1502,11 @@ body.single-product.dewit-mobile-filter-open:not([data-dewit-drawer-open="true"]
 	margin-top: 8px;
 }
 
+.site-footer .site-footer__phone {
+	justify-self: start;
+	margin-top: 14px;
+}
+
 .site-footer__hours table {
 	border-collapse: collapse;
 	font-size: 12px;

@@ -12,12 +12,13 @@
 			<div class="site-footer__brand">
 				<span class="site-footer__eyebrow">De Wit Bouwmachines</span>
 				<strong>Altijd de oplossing<br>in huis.</strong>
-				<a class="site-footer__cta" href="tel:+31412634969">Bel ons <span aria-hidden="true">→</span></a>
 			</div>
 			<div class="site-footer__contact">
 				<strong>Bezoek ons</strong>
 				<p>Friezenweg 24<br>5349 AW Oss</p>
-				<p><a href="tel:+31412634969">0412 - 63 49 69</a></p>
+				<a class="site-header__phone site-footer__phone" href="tel:+31412634969" aria-label="0412 - 63 49 69">
+					<span aria-hidden="true">☎</span> 0412 - 63 49 69
+				</a>
 			</div>
 			<div class="site-footer__hours">
 				<strong>Openingstijden</strong>
