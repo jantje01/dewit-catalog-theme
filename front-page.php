@@ -27,17 +27,17 @@ get_header();
 		<?php else : ?>
 			<section class="dewit-home-hero" aria-labelledby="dewit-home-title">
 				<div class="dewit-home-hero__copy">
+					<div class="dewit-home-hero__reviews">
+						<span class="dewit-home-hero__reviews-stars" aria-hidden="true">★★★★<span class="dewit-home-hero__reviews-star-partial">★</span></span>
+						<img class="dewit-home-hero__reviews-google-logo" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/google-g.svg' ); ?>" width="18" height="18" alt="">
+						<span><?php esc_html_e( '4,7/5 · 31 Google reviews', 'dewit-catalog-theme' ); ?></span>
+					</div>
 					<h1 id="dewit-home-title"><?php esc_html_e( 'Alles voor de bouw op één plek.', 'dewit-catalog-theme' ); ?></h1>
 					<p><?php esc_html_e( 'Ontdek ons assortiment bouwmachines, bouwmaterialen en professioneel materieel.', 'dewit-catalog-theme' ); ?></p>
 					<a class="dewit-home-hero__cta" href="#dewit-home-categories">
 						<?php esc_html_e( 'Bekijk het assortiment', 'dewit-catalog-theme' ); ?>
 						<span aria-hidden="true">→</span>
 					</a>
-					<div class="dewit-home-hero__reviews">
-						<span class="dewit-home-hero__reviews-stars" aria-hidden="true">★★★★<span class="dewit-home-hero__reviews-star-partial">★</span></span>
-						<img class="dewit-home-hero__reviews-google-logo" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/google-g.svg' ); ?>" width="18" height="18" alt="">
-						<span><?php esc_html_e( '4,7/5 · 31 Google reviews', 'dewit-catalog-theme' ); ?></span>
-					</div>
 				</div>
 			</section>
 
