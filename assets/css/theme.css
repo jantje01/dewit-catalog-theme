@@ -1294,19 +1294,11 @@ body.single-product .site-header .menu-toggle .menu-toggle__bar::after {
 }
 
 html:has(body.single-product) {
-	background: #003965;
-	height: 100%;
-	overflow: hidden;
+	background: #f5f5f7;
 }
 
 body.single-product {
 	background: #f5f5f7;
-	height: 100%;
-	overflow: hidden;
-}
-
-body.single-product .site-footer {
-	display: none;
 }
 
 body.theme-dewit-theme-woocommerce .dewit-header-category-toggle .menu-toggle__bar,
