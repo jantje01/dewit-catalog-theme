@@ -5367,7 +5367,7 @@ body.woocommerce-page .dewit-category-bar__panel-inner {
 
 	.dewit-mobile-menu-toggle > span:not(.screen-reader-text) {
 		border-radius: 999px;
-		width: 22px;
+		width: 18px;
 	}
 
 	.site-branding {
@@ -5678,6 +5678,6 @@ body.woocommerce-page .dewit-category-bar__panel-inner {
 	}
 
 	.dewit-mobile-menu-toggle > span:not(.screen-reader-text) {
-		width: 20px;
+		width: 16px;
 	}
 }
