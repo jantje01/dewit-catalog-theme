@@ -5377,6 +5377,10 @@ body.woocommerce-page .dewit-category-bar__panel-inner {
 		padding-left: 0;
 	}
 
+	body .site-header .site-branding .custom-logo {
+		max-height: 34px;
+	}
+
 	.site-header__phone {
 		grid-column: 3;
 		grid-row: 1;
