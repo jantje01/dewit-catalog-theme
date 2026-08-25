@@ -4686,8 +4686,8 @@ body.single-product .dewit-product-page__layout {
 }
 
 .dewit-grid-catalog__intro {
-	background: linear-gradient(120deg, #e9f2fa 0%, #ffffff 78%);
-	border: 1px solid #d8e4ee;
+	background: #003965;
+	border: 0;
 	border-radius: 18px;
 	margin-bottom: 16px;
 	padding: 28px 32px;
@@ -4716,7 +4716,7 @@ body.single-product .dewit-product-page__layout {
 }
 
 .dewit-grid-catalog__intro h1 {
-	color: #003965;
+	color: #fff;
 	font-size: clamp(2rem, 4vw, 4rem);
 	margin: 0;
 }
