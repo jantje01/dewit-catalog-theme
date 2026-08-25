@@ -4686,24 +4686,12 @@ body.single-product .dewit-product-page__layout {
 }
 
 .dewit-grid-catalog__intro {
-	background: #003965;
+	background: transparent;
 	border: 0;
-	border-radius: 18px;
+	border-left: 5px solid #f4a900;
+	border-radius: 0;
 	margin-bottom: 16px;
-	padding: 28px 32px;
-	position: relative;
-	overflow: hidden;
-}
-
-.dewit-grid-catalog__intro::after {
-	background: #f4a900;
-	border-radius: 999px;
-	bottom: 0;
-	content: '';
-	height: 4px;
-	left: 32px;
-	position: absolute;
-	width: 64px;
+	padding: 12px 0 12px 22px;
 }
 
 .dewit-grid-catalog__eyebrow {
@@ -4716,7 +4704,7 @@ body.single-product .dewit-product-page__layout {
 }
 
 .dewit-grid-catalog__intro h1 {
-	color: #fff;
+	color: #003965;
 	font-size: clamp(2rem, 4vw, 4rem);
 	margin: 0;
 }
@@ -4987,12 +4975,7 @@ body.single-product .dewit-product-page__layout {
 
 @media (max-width: 640px) {
 	.dewit-grid-catalog__intro {
-		border-radius: 14px;
-		padding: 24px 20px;
-	}
-
-	.dewit-grid-catalog__intro::after {
-		left: 20px;
+		padding: 10px 0 10px 16px;
 	}
 }
 
