@@ -569,6 +569,12 @@ body.dewit-shop-grouped .site-header {
 	outline: 0;
 }
 
+@media (max-width: 900px) {
+	.catalog-header-search input[type="search"] {
+		font-size: 16px;
+	}
+}
+
 .catalog-header-search button {
 	background: transparent;
 	border: 0;
