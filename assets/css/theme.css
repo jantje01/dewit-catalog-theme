@@ -5595,6 +5595,10 @@ body.woocommerce-page .dewit-category-bar__panel-inner {
 		width: 100%;
 	}
 
+	.dewit-category-bar__panel-inner > ul li > .dewit-category-bar__desktop-category-link {
+		display: none;
+	}
+
 	.dewit-category-bar__panel-inner > ul li > ul,
 	.dewit-category-bar__panel-inner > ul li > .dewit-category-bar__child-back {
 		display: none;
