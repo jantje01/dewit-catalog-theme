@@ -221,9 +221,6 @@ function dewit_theme_render_category_bar(): void {
 						<?php if ( ! is_wp_error( $children ) && $children ) : ?>
 							<div class="dewit-category-bar__panel">
 								<div class="dewit-category-bar__panel-inner">
-									<div class="dewit-category-bar__panel-heading">
-										<a href="<?php echo esc_url( $parent_url ); ?>"><?php echo esc_html( $parent->name ); ?> <b aria-hidden="true">↗</b></a>
-									</div>
 							<ul>
 								<?php dewit_theme_render_category_bar_children( $parent->term_id ); ?>
 							</ul>
