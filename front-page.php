@@ -35,6 +35,7 @@ get_header();
 					</a>
 					<a class="dewit-home-hero__reviews" href="https://www.google.com/search?q=de+wit+bouw+machines&amp;ie=UTF-8" target="_blank" rel="noopener noreferrer">
 						<span class="dewit-home-hero__reviews-stars" aria-hidden="true">★★★★<span class="dewit-home-hero__reviews-star-partial">★</span></span>
+						<img class="dewit-home-hero__reviews-google-logo" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/google-g.svg' ); ?>" width="18" height="18" alt="">
 						<span><?php esc_html_e( '4,7/5 · 31 Google reviews', 'dewit-catalog-theme' ); ?></span>
 					</a>
 				</div>
