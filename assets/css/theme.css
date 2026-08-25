@@ -5177,14 +5177,14 @@ body.woocommerce-page .site-header .site-header__mega-menu {
 
 .dewit-category-bar__panel-inner > ul > li > ul {
 	list-style: none;
-	margin: 4px 0 10px 12px;
+	margin: 4px 0 10px;
 	padding: 0;
 }
 
 .dewit-category-bar__panel-inner > ul > li > ul li a {
 	border-left-color: #e8ecef;
 	font-size: .74rem;
-	padding-block: 4px;
+	padding: 4px 0 4px 12px;
 }
 
 .dewit-category-bar__panel-inner > ul li a:hover,
