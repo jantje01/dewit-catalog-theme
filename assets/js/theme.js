@@ -22,9 +22,24 @@
 		return;
 	}
 
+	const resetLevels = function () {
+		menu.querySelectorAll('.is-mobile-active').forEach(function (item) {
+			item.classList.remove('is-mobile-active');
+		});
+
+		menu.querySelectorAll('.is-mobile-submenu').forEach(function (list) {
+			list.classList.remove('is-mobile-submenu');
+		});
+
+		menu.querySelectorAll('[aria-expanded="true"]').forEach(function (trigger) {
+			trigger.setAttribute('aria-expanded', 'false');
+		});
+	};
+
 	const closeMenu = function () {
 		document.body.classList.remove('dewit-mobile-menu-open');
 		toggle.setAttribute('aria-expanded', 'false');
+		resetLevels();
 	};
 
 	if (document.body.classList.contains('single-product')) {
@@ -39,6 +54,39 @@
 	});
 
 	menu.addEventListener('click', function (event) {
+		const openTrigger = event.target.closest('.dewit-category-bar__root-trigger, .dewit-category-bar__child-trigger');
+
+		if (openTrigger) {
+			event.preventDefault();
+			const item = openTrigger.closest('li');
+			const list = item ? item.parentElement : null;
+
+			if (item && list) {
+				list.classList.add('is-mobile-submenu');
+				item.classList.add('is-mobile-active');
+				openTrigger.setAttribute('aria-expanded', 'true');
+			}
+			return;
+		}
+
+		const backTrigger = event.target.closest('.dewit-category-bar__root-back, .dewit-category-bar__child-back');
+
+		if (backTrigger) {
+			event.preventDefault();
+			const item = backTrigger.closest('li');
+			const list = item ? item.parentElement : null;
+
+			if (item && list) {
+				item.classList.remove('is-mobile-active');
+				list.classList.remove('is-mobile-submenu');
+				const trigger = item.querySelector(':scope > .dewit-category-bar__root-trigger, :scope > .dewit-category-bar__child-trigger');
+				if (trigger) {
+					trigger.setAttribute('aria-expanded', 'false');
+				}
+			}
+			return;
+		}
+
 		if (event.target.closest('a')) {
 			closeMenu();
 		}
