@@ -5618,8 +5618,7 @@ body.woocommerce-page .dewit-category-bar__panel-inner {
 		display: none;
 	}
 
-	.dewit-category-bar__panel-inner > ul.is-mobile-submenu > li.is-mobile-active > ul,
-	.dewit-category-bar__panel-inner > ul.is-mobile-submenu > li.is-mobile-active > .dewit-category-bar__child-back {
+	.dewit-category-bar__panel-inner > ul.is-mobile-submenu > li.is-mobile-active > ul {
 		display: block;
 	}
 }

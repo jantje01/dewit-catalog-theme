@@ -76,6 +76,23 @@
 
 		if (backTrigger) {
 			event.preventDefault();
+
+			if (backTrigger.matches('.dewit-category-bar__root-back')) {
+				const panel = backTrigger.closest('.dewit-category-bar__panel');
+				const nestedList = panel ? panel.querySelector('ul.is-mobile-submenu') : null;
+				const activeItem = nestedList ? nestedList.querySelector(':scope > li.is-mobile-active') : null;
+
+				if (nestedList && activeItem) {
+					activeItem.classList.remove('is-mobile-active');
+					nestedList.classList.remove('is-mobile-submenu');
+					const nestedTrigger = activeItem.querySelector(':scope > .dewit-category-bar__child-trigger, :scope > .dewit-category-bar__mobile-level-trigger');
+					if (nestedTrigger) {
+						nestedTrigger.setAttribute('aria-expanded', 'false');
+					}
+					return;
+				}
+			}
+
 			const item = backTrigger.closest('li');
 			const list = item ? item.parentElement : null;
 
