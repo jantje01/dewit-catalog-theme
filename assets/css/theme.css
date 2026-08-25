@@ -5156,7 +5156,8 @@ body.woocommerce-page .site-header .site-header__mega-menu {
 .dewit-category-bar__root-back,
 .dewit-category-bar__child-back,
 .dewit-category-bar__mobile-heading,
-.dewit-category-bar__mobile-close {
+.dewit-category-bar__mobile-close,
+.dewit-category-bar__mobile-level-trigger {
 	display: none;
 }
 
@@ -5461,8 +5462,32 @@ body.woocommerce-page .dewit-category-bar__panel-inner {
 		width: 100%;
 	}
 
+	.dewit-category-bar__desktop-category-link {
+		display: none;
+	}
+
+	.dewit-category-bar__mobile-level-trigger {
+		align-items: center;
+		background: transparent;
+		border: 0;
+		border-bottom: 1px solid #edf0f2;
+		box-sizing: border-box;
+		color: #003965;
+		display: flex;
+		font: inherit;
+		font-size: .8rem;
+		font-weight: 700;
+		justify-content: flex-start;
+		min-height: 56px;
+		padding: 13px 52px 13px 0;
+		text-align: left;
+		width: 100%;
+	}
+
 	.dewit-category-bar__list > .dewit-category-bar__item > .dewit-category-bar__link,
-	.dewit-category-bar__panel-inner > ul > li > a {
+	.dewit-category-bar__list > .dewit-category-bar__item > .dewit-category-bar__mobile-level-trigger,
+	.dewit-category-bar__panel-inner > ul > li > a,
+	.dewit-category-bar__panel-inner > ul > li > .dewit-category-bar__mobile-level-trigger {
 		grid-column: 1 / -1;
 		grid-row: 1;
 	}
@@ -5511,6 +5536,7 @@ body.woocommerce-page .dewit-category-bar__panel-inner {
 	}
 
 	.dewit-category-bar__list.is-mobile-submenu > .dewit-category-bar__item.is-mobile-active > .dewit-category-bar__link,
+	.dewit-category-bar__list.is-mobile-submenu > .dewit-category-bar__item.is-mobile-active > .dewit-category-bar__mobile-level-trigger,
 	.dewit-category-bar__list.is-mobile-submenu > .dewit-category-bar__item.is-mobile-active > .dewit-category-bar__root-trigger {
 		display: none;
 	}
@@ -5583,6 +5609,7 @@ body.woocommerce-page .dewit-category-bar__panel-inner {
 	}
 
 	.dewit-category-bar__panel-inner > ul.is-mobile-submenu > li.is-mobile-active > a,
+	.dewit-category-bar__panel-inner > ul.is-mobile-submenu > li.is-mobile-active > .dewit-category-bar__mobile-level-trigger,
 	.dewit-category-bar__panel-inner > ul.is-mobile-submenu > li.is-mobile-active > .dewit-category-bar__child-trigger {
 		display: none;
 	}

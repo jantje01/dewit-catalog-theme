@@ -57,7 +57,7 @@
 			return;
 		}
 
-		const openTrigger = event.target.closest('.dewit-category-bar__root-trigger, .dewit-category-bar__child-trigger');
+		const openTrigger = event.target.closest('.dewit-category-bar__root-trigger, .dewit-category-bar__child-trigger, .dewit-category-bar__mobile-level-trigger');
 
 		if (openTrigger) {
 			event.preventDefault();
@@ -82,7 +82,7 @@
 			if (item && list) {
 				item.classList.remove('is-mobile-active');
 				list.classList.remove('is-mobile-submenu');
-				const trigger = item.querySelector(':scope > .dewit-category-bar__root-trigger, :scope > .dewit-category-bar__child-trigger');
+				const trigger = item.querySelector(':scope > .dewit-category-bar__root-trigger, :scope > .dewit-category-bar__child-trigger, :scope > .dewit-category-bar__mobile-level-trigger');
 				if (trigger) {
 					trigger.setAttribute('aria-expanded', 'false');
 				}

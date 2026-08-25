@@ -123,7 +123,12 @@ function dewit_theme_render_category_bar_children( int $parent_id ): void {
 		);
 		?>
 		<li class="<?php echo ( ! is_wp_error( $grandchildren ) && ! empty( $grandchildren ) ) ? 'has-children' : ''; ?>">
-			<a href="<?php echo esc_url( $child_url ); ?>"><?php echo esc_html( $child->name ); ?></a>
+			<?php if ( ! is_wp_error( $grandchildren ) && ! empty( $grandchildren ) ) : ?>
+				<a class="dewit-category-bar__desktop-category-link" href="<?php echo esc_url( $child_url ); ?>"><?php echo esc_html( $child->name ); ?></a>
+				<button class="dewit-category-bar__mobile-level-trigger" type="button" aria-expanded="false"><?php echo esc_html( $child->name ); ?></button>
+			<?php else : ?>
+				<a href="<?php echo esc_url( $child_url ); ?>"><?php echo esc_html( $child->name ); ?></a>
+			<?php endif; ?>
 			<?php if ( ! is_wp_error( $grandchildren ) && ! empty( $grandchildren ) ) : ?>
 				<button class="dewit-category-bar__child-trigger" type="button" aria-expanded="false" aria-label="<?php echo esc_attr( sprintf( __( '%s openen', 'dewit-catalog-theme' ), $child->name ) ); ?>"><span aria-hidden="true">›</span></button>
 				<button class="dewit-category-bar__child-back" type="button"><span aria-hidden="true">‹</span> <?php esc_html_e( 'Terug', 'dewit-catalog-theme' ); ?></button>
@@ -218,9 +223,12 @@ function dewit_theme_render_category_bar(): void {
 					}
 					?>
 					<li class="dewit-category-bar__item<?php echo ( ! is_wp_error( $children ) && $children ) ? ' has-children' : ''; ?>">
-						<a class="dewit-category-bar__link" href="<?php echo esc_url( $parent_url ); ?>">
-							<?php echo esc_html( $parent->name ); ?>
-						</a>
+						<?php if ( ! is_wp_error( $children ) && $children ) : ?>
+							<a class="dewit-category-bar__link dewit-category-bar__desktop-category-link" href="<?php echo esc_url( $parent_url ); ?>"><?php echo esc_html( $parent->name ); ?></a>
+							<button class="dewit-category-bar__link dewit-category-bar__mobile-level-trigger" type="button" aria-expanded="false"><?php echo esc_html( $parent->name ); ?></button>
+						<?php else : ?>
+							<a class="dewit-category-bar__link" href="<?php echo esc_url( $parent_url ); ?>"><?php echo esc_html( $parent->name ); ?></a>
+						<?php endif; ?>
 						<?php if ( ! is_wp_error( $children ) && $children ) : ?>
 							<button class="dewit-category-bar__root-trigger" type="button" aria-expanded="false" aria-label="<?php echo esc_attr( sprintf( __( '%s openen', 'dewit-catalog-theme' ), $parent->name ) ); ?>"><span aria-hidden="true">›</span></button>
 							<div class="dewit-category-bar__panel">
