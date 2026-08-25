@@ -4686,8 +4686,24 @@ body.single-product .dewit-product-page__layout {
 }
 
 .dewit-grid-catalog__intro {
+	background: linear-gradient(120deg, #e9f2fa 0%, #ffffff 78%);
+	border: 1px solid #d8e4ee;
+	border-radius: 18px;
 	margin-bottom: 16px;
-	padding-block: 24px;
+	padding: 28px 32px;
+	position: relative;
+	overflow: hidden;
+}
+
+.dewit-grid-catalog__intro::after {
+	background: #f4a900;
+	border-radius: 999px;
+	bottom: 0;
+	content: '';
+	height: 4px;
+	left: 32px;
+	position: absolute;
+	width: 64px;
 }
 
 .dewit-grid-catalog__eyebrow {
@@ -4967,6 +4983,17 @@ body.single-product .dewit-product-page__layout {
 	font-size: .82rem;
 	font-weight: 500;
 	text-decoration: none;
+}
+
+@media (max-width: 640px) {
+	.dewit-grid-catalog__intro {
+		border-radius: 14px;
+		padding: 24px 20px;
+	}
+
+	.dewit-grid-catalog__intro::after {
+		left: 20px;
+	}
 }
 
 /* Keep the mega-menu hierarchy aligned with the catalog cards. */
