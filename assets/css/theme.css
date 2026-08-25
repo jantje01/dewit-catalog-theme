@@ -3709,7 +3709,7 @@ body.theme-dewit-theme-woocommerce.elementor-template-canvas .e-load-more-spinne
 		min-height: 100svh;
 		overflow-x: hidden;
 		overflow-y: auto !important;
-		overscroll-behavior-y: contain;
+		overscroll-behavior-y: auto;
 	}
 
 	html:has(body.theme-dewit-theme-woocommerce.elementor-template-canvas) {
