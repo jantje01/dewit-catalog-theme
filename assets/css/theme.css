@@ -5602,6 +5602,17 @@ body.woocommerce-page .dewit-category-bar__panel-inner {
 		display: none;
 	}
 
+	.dewit-category-bar__panel-inner > ul > li > ul {
+		margin: 0;
+	}
+
+	.dewit-category-bar__panel-inner > ul > li > ul li a {
+		align-items: center;
+		display: flex;
+		min-height: 40px;
+		padding: 6px 0;
+	}
+
 	.dewit-category-bar__panel-inner > ul li > ul,
 	.dewit-category-bar__panel-inner > ul li > .dewit-category-bar__child-back {
 		display: none;
