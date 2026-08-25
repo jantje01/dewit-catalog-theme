@@ -257,7 +257,7 @@ img {
 }
 
 .dewit-home-subcategory-list > li:has(> ul) {
-	margin-bottom: 10px;
+	margin-bottom: 4px;
 	padding-bottom: 0;
 }
 
