@@ -90,7 +90,7 @@ img {
 	align-items: center;
 	background-color: var(--color-header-blue);
 	background-image:
-		linear-gradient(90deg, rgba(0, 57, 101, .84) 0%, rgba(0, 57, 101, .62) 48%, rgba(0, 57, 101, .08) 100%),
+		linear-gradient(90deg, rgba(0, 57, 101, .58) 0%, rgba(0, 57, 101, .22) 100%),
 		image-set(
 			url("../images/hero.avif") type("image/avif"),
 			url("../images/hero.webp") type("image/webp"),
@@ -322,13 +322,6 @@ img {
 
 @media (max-width: 760px) {
 	.dewit-home-hero {
-		background-image:
-			linear-gradient(90deg, rgba(0, 57, 101, .58) 0%, rgba(0, 57, 101, .22) 100%),
-			image-set(
-				url("../images/hero.avif") type("image/avif"),
-				url("../images/hero.webp") type("image/webp"),
-				url("../images/hero.jpeg") type("image/jpeg")
-			);
 		background-position: 62% center;
 		grid-template-columns: 1fr;
 		margin-bottom: 40px;
