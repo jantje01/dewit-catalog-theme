@@ -5396,15 +5396,17 @@ body.woocommerce-page .dewit-category-bar__panel-inner {
 		grid-column: 1 / -1;
 		grid-row: 2;
 		height: 40px;
+		justify-self: stretch;
 		left: auto;
 		margin: 0;
 		max-width: none;
+		min-width: 0;
 		padding: 0 12px;
 		position: relative;
 		right: auto;
 		top: auto;
 		transform: none;
-		width: 100%;
+		width: 100% !important;
 	}
 
 	.dewit-category-bar {
