@@ -5325,6 +5325,7 @@ body.woocommerce-page .dewit-category-bar__panel-inner {
 	}
 
 	.dewit-category-bar {
+		background: #fff;
 		display: none;
 		position: fixed;
 		top: 0;
@@ -5333,12 +5334,14 @@ body.woocommerce-page .dewit-category-bar__panel-inner {
 		bottom: 0;
 		height: 100dvh;
 		max-height: none;
+		min-height: 100dvh;
 		overflow: auto;
 		width: 100vw;
 		z-index: 100;
 	}
 
 	.dewit-category-bar__inner {
+		background: #fff;
 		margin-inline: 0;
 		max-width: none;
 		width: 100vw;
@@ -5376,21 +5379,27 @@ body.woocommerce-page .dewit-category-bar__panel-inner {
 	}
 
 	.dewit-category-bar__list {
+		box-sizing: border-box;
 		display: grid;
 		gap: 0;
+		margin: 0;
 		padding: 8px 16px 20px;
+		width: 100%;
 	}
 
 	.dewit-category-bar__item {
 		display: block;
 		position: relative;
 		white-space: normal;
+		width: 100%;
 	}
 
 	.dewit-category-bar__link {
 		border-bottom: 1px solid #d7dce1;
+		box-sizing: border-box;
 		display: flex;
 		justify-content: flex-start;
+		min-height: 56px;
 		padding: 13px 0;
 		width: 100%;
 	}
@@ -5408,7 +5417,7 @@ body.woocommerce-page .dewit-category-bar__panel-inner {
 		color: #003965;
 		display: inline-flex;
 		font-size: 1.5rem;
-		height: 48px;
+		height: 56px;
 		justify-content: center;
 		position: absolute;
 		right: 0;
@@ -5442,7 +5451,9 @@ body.woocommerce-page .dewit-category-bar__panel-inner {
 	}
 
 	.dewit-category-bar__panel-inner {
+		box-sizing: border-box;
 		padding: 0 0 8px;
+		width: 100%;
 	}
 
 	.dewit-category-bar__mobile-heading {
@@ -5472,18 +5483,25 @@ body.woocommerce-page .dewit-category-bar__panel-inner {
 	}
 
 	.dewit-category-bar__panel-inner > ul {
+		box-sizing: border-box;
 		grid-template-columns: 1fr;
+		margin: 0;
 		padding-left: 0;
+		width: 100%;
 	}
 
 	.dewit-category-bar__panel-inner > ul li {
 		position: relative;
+		width: 100%;
 	}
 
 	.dewit-category-bar__panel-inner > ul li a {
 		border-left: 0;
 		border-bottom: 1px solid #edf0f2;
-		padding: 9px 0;
+		box-sizing: border-box;
+		min-height: 56px;
+		padding: 13px 0;
+		width: 100%;
 	}
 
 	.dewit-category-bar__panel-inner > ul li > ul,
