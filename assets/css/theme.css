@@ -1534,7 +1534,16 @@ body.single-product.dewit-mobile-filter-open:not([data-dewit-drawer-open="true"]
 }
 
 .site-footer__opening-note {
+	align-items: center;
+	display: flex;
+	gap: 8px;
 	margin-top: 10px !important;
+}
+
+.site-footer__opening-note svg {
+	flex: 0 0 auto;
+	height: 16px;
+	width: 16px;
 }
 
 .site-footer .site-footer__phone {
