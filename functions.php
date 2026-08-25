@@ -1468,7 +1468,8 @@ function dewit_theme_render_grouped_category_products_html( string $slug ): stri
 			<p><?php esc_html_e( 'Wij denken graag met je mee.', 'dewit-catalog-theme' ); ?></p>
 		</div>
 		<a class="site-header__phone dewit-catalog-assistance__phone" href="tel:+31412634969" aria-label="<?php esc_attr_e( 'Bel ons op 0412 - 63 49 69', 'dewit-catalog-theme' ); ?>">
-			<span aria-hidden="true">☎</span> 0412 - 63 49 69
+			<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6.6 10.8c1.5 3 3.9 5.4 6.9 6.9l2.3-2.3a1 1 0 0 1 1-.24c1.1.36 2.26.54 3.45.54a1 1 0 0 1 1 1V21a1 1 0 0 1-1 1C10.7 22 2 13.3 2 2.8a1 1 0 0 1 1-1H7.3a1 1 0 0 1 1 1c0 1.19.18 2.35.54 3.45a1 1 0 0 1-.24 1Z"/></svg>
+			0412 - 63 49 69
 		</a>
 	</section>
 	<?php

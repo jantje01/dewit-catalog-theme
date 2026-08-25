@@ -1143,6 +1143,12 @@ body.dewit-shop-grouped .dewit-catalog-view-switch button.is-active {
 	color: #151515;
 }
 
+.site-header__phone svg {
+	fill: currentColor;
+	height: .9em;
+	width: .9em;
+}
+
 /* Overlay the search without changing the existing header grid or height. */
 .site-header__inner > .catalog-header-search {
 	box-sizing: border-box;
