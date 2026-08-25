@@ -5550,13 +5550,16 @@ body.woocommerce-page .dewit-category-bar__panel-inner {
 	.dewit-category-bar__mobile-heading {
 		align-items: center;
 		display: flex;
-		gap: 12px;
-		padding: 8px 0 12px;
+		flex-direction: column;
+		gap: 6px;
+		padding: 8px 0 16px;
+		align-items: flex-start;
 	}
 
 	.dewit-category-bar__mobile-heading strong {
 		color: #003965;
-		font-size: 1rem;
+		font-size: 1.25rem;
+		line-height: 1.2;
 	}
 
 	.dewit-category-bar__root-back,
