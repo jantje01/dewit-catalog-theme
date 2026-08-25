@@ -223,47 +223,6 @@
 		return parser.value;
 	}
 
-	function initPullRefreshGuard() {
-		const isMobileViewport = window.matchMedia && window.matchMedia('(max-width: 766px)').matches;
-		const productPage = document.querySelector('.dewit-product-page');
-		const rootScroller = document.scrollingElement || document.documentElement;
-		const scrollContainers = productPage ? [productPage] : [rootScroller];
-
-		if (!isMobileViewport || !scrollContainers.length) {
-			return;
-		}
-
-		scrollContainers.forEach(function (scrollContainer) {
-			if (!scrollContainer || scrollContainer.dataset.dewitPullGuardReady === 'true') {
-				return;
-			}
-
-			let startY = 0;
-
-			scrollContainer.dataset.dewitPullGuardReady = 'true';
-			scrollContainer.addEventListener('touchstart', function (event) {
-				if (!event.touches || !event.touches.length) {
-					return;
-				}
-
-				startY = event.touches[0].clientY;
-			}, { passive: true });
-
-			scrollContainer.addEventListener('touchmove', function (event) {
-				if (!event.touches || !event.touches.length) {
-					return;
-				}
-
-				const currentY = event.touches[0].clientY;
-				const isPullingDown = currentY > startY;
-
-				if (isPullingDown && scrollContainer.scrollTop <= 0) {
-					event.preventDefault();
-				}
-			}, { passive: false });
-		});
-	}
-
 	function initFixedHeaderWheelScroll() {
 		const isNarrowViewport = window.matchMedia && window.matchMedia('(max-width: 766px)').matches;
 		const header = document.querySelector('.site-header');
@@ -734,25 +693,20 @@
 		document.addEventListener('DOMContentLoaded', injectShopToolbar);
 		document.addEventListener('DOMContentLoaded', initHeaderSearch);
 		document.addEventListener('DOMContentLoaded', routeSidebarLogoToHome);
-		document.addEventListener('DOMContentLoaded', initPullRefreshGuard);
 		document.addEventListener('DOMContentLoaded', initFixedHeaderWheelScroll);
 	} else {
 		injectShopToolbar();
 		initHeaderSearch();
 		routeSidebarLogoToHome();
-		initPullRefreshGuard();
 		initFixedHeaderWheelScroll();
 	}
 
 	window.addEventListener('load', routeSidebarLogoToHome);
-	window.addEventListener('load', initPullRefreshGuard);
 	window.addEventListener('load', initFixedHeaderWheelScroll);
-	window.addEventListener('resize', initPullRefreshGuard);
 	window.addEventListener('resize', initFixedHeaderWheelScroll);
 	window.addEventListener('dewit/products-updated', function () {
 		updateProductViewSwitchLabel();
 		setProductCardViewMode(getProductCardViewMode());
-		initPullRefreshGuard();
 	});
 }());
 
