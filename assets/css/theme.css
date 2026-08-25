@@ -156,6 +156,27 @@ img {
 	color: #151515;
 }
 
+.dewit-home-hero__reviews {
+	align-items: center;
+	color: rgba(255, 255, 255, .92);
+	display: inline-flex;
+	font-size: .82rem;
+	font-weight: 700;
+	gap: 9px;
+	margin-top: 16px;
+	text-decoration: none;
+}
+
+.dewit-home-hero__reviews-stars {
+	color: #f4a900;
+	font-size: 1rem;
+	letter-spacing: .08em;
+}
+
+.dewit-home-hero__reviews:hover {
+	color: #fff;
+}
+
 .dewit-home-section-heading {
 	margin-bottom: 24px;
 }

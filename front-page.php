@@ -33,6 +33,10 @@ get_header();
 						<?php esc_html_e( 'Bekijk het assortiment', 'dewit-catalog-theme' ); ?>
 						<span aria-hidden="true">→</span>
 					</a>
+					<a class="dewit-home-hero__reviews" href="https://www.google.com/search?q=de+wit+bouw+machines&amp;ie=UTF-8" target="_blank" rel="noopener noreferrer">
+						<span class="dewit-home-hero__reviews-stars" aria-hidden="true">★★★★★</span>
+						<span><?php esc_html_e( 'Google reviews', 'dewit-catalog-theme' ); ?></span>
+					</a>
 				</div>
 			</section>
 
