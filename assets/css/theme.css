@@ -5357,6 +5357,7 @@ body.woocommerce-page .dewit-category-bar__panel-inner {
 
 	.dewit-mobile-menu-toggle {
 		display: inline-flex;
+		gap: 3px;
 		grid-column: 1;
 		grid-row: 1;
 		height: 44px;
@@ -5367,7 +5368,9 @@ body.woocommerce-page .dewit-category-bar__panel-inner {
 
 	.dewit-mobile-menu-toggle > span:not(.screen-reader-text) {
 		border-radius: 999px;
-		width: 18px;
+		height: 1.5px;
+		opacity: .85;
+		width: 16px;
 	}
 
 	.site-branding {
@@ -5684,6 +5687,6 @@ body.woocommerce-page .dewit-category-bar__panel-inner {
 	}
 
 	.dewit-mobile-menu-toggle > span:not(.screen-reader-text) {
-		width: 16px;
+		width: 14px;
 	}
 }
