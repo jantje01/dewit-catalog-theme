@@ -1476,9 +1476,9 @@ body.single-product.dewit-mobile-filter-open:not([data-dewit-drawer-open="true"]
 
 .site-footer__inner {
 	display: grid;
-	grid-template-columns: 1.4fr 1fr;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
 	font-size: 13px;
-	gap: 48px;
+	gap: 0;
 	padding-bottom: 38px;
 }
 
@@ -1499,8 +1499,20 @@ body.single-product.dewit-mobile-filter-open:not([data-dewit-drawer-open="true"]
 }
 
 .site-footer__brand {
+	align-items: center;
 	border-right: 1px solid rgba(255, 255, 255, .18);
+	display: flex;
+	flex-direction: column;
 	padding-right: 48px;
+	text-align: center;
+}
+
+.site-footer__contact {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	padding-left: 48px;
+	text-align: center;
 }
 
 .site-footer__eyebrow {
@@ -1657,10 +1669,18 @@ body.single-product.dewit-mobile-filter-open:not([data-dewit-drawer-open="true"]
 	}
 
 	.site-footer__brand {
+		align-items: flex-start;
 		border-bottom: 0;
 		border-right: 0;
 		padding-bottom: 28px;
 		padding-right: 0;
+		text-align: left;
+	}
+
+	.site-footer__contact {
+		align-items: flex-start;
+		padding-left: 0;
+		text-align: left;
 	}
 
 	.site-footer__brand > strong {
