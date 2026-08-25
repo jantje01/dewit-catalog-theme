@@ -10,7 +10,11 @@
 	<div class="container">
 		<div class="site-footer__inner">
 			<div class="site-footer__brand">
-				<span class="site-footer__eyebrow">De Wit Bouwmachines</span>
+				<?php if ( has_custom_logo() ) : ?>
+					<div class="site-footer__logo"><?php the_custom_logo(); ?></div>
+				<?php else : ?>
+					<span class="site-footer__eyebrow">De Wit Bouwmachines</span>
+				<?php endif; ?>
 				<strong>Altijd de oplossing in huis.</strong>
 				<a class="site-header__phone site-footer__phone" href="tel:+31412634969" aria-label="0412 - 63 49 69">
 					<span aria-hidden="true">☎</span> 0412 - 63 49 69

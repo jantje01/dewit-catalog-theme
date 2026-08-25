@@ -1476,6 +1476,21 @@ body.single-product.dewit-mobile-filter-open:not([data-dewit-drawer-open="true"]
 	text-transform: uppercase;
 }
 
+.site-footer__logo {
+	margin-bottom: 12px;
+}
+
+.site-footer__logo .custom-logo-link {
+	display: inline-flex;
+}
+
+.site-footer__logo .custom-logo {
+	display: block;
+	height: auto;
+	max-height: 26px;
+	width: auto;
+}
+
 .site-footer__brand > strong {
 	font-size: clamp(1.15rem, 2vw, 1.5rem);
 	letter-spacing: -.04em;
