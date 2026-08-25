@@ -4739,6 +4739,10 @@ body.single-product .dewit-product-page__layout {
 	padding-block: 56px 80px;
 }
 
+body.tax-product_cat .dewit-grid-catalog {
+	min-height: 0;
+}
+
 .dewit-grid-catalog__inner {
 	max-width: 1440px;
 }
