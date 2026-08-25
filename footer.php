@@ -30,7 +30,6 @@
 		</div>
 		<div class="site-footer__bottom">
 			<span>© <?php echo esc_html( gmdate( 'Y' ) ); ?> De Wit Bouwmachines B.V.</span>
-			<span>De Wit Bouwmachines · Oss</span>
 		</div>
 	</div>
 </footer>
