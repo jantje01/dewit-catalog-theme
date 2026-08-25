@@ -5397,7 +5397,7 @@ body.woocommerce-page .dewit-category-bar__panel-inner {
 		border-radius: 14px;
 		box-shadow: none;
 		display: flex;
-		grid-column: 1 / -1;
+		grid-column: 1 / 4;
 		grid-row: 2;
 		height: 40px;
 		justify-self: stretch;
