@@ -26,9 +26,6 @@
 				<p class="site-footer__opening-note"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg><span>Iedere werkdag geopend van 07:30–17:00.</span></p>
 			</div>
 		</div>
-		<div class="site-footer__bottom">
-			<span>© <?php echo esc_html( gmdate( 'Y' ) ); ?> De Wit Bouwmachines B.V.</span>
-		</div>
 	</div>
 </footer>
 <?php wp_footer(); ?>
