@@ -1594,7 +1594,7 @@ body.single-product.dewit-mobile-filter-open:not([data-dewit-drawer-open="true"]
 	}
 
 	.site-footer__brand {
-		border-bottom: 1px solid rgba(255, 255, 255, .18);
+		border-bottom: 0;
 		border-right: 0;
 		padding-bottom: 28px;
 		padding-right: 0;
