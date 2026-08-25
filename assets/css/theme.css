@@ -1439,7 +1439,7 @@ body.single-product.dewit-mobile-filter-open:not([data-dewit-drawer-open="true"]
 
 .site-footer__inner {
 	display: grid;
-	grid-template-columns: 1.4fr 1fr 1.4fr;
+	grid-template-columns: 1.4fr 1fr;
 	font-size: 13px;
 	gap: 48px;
 	padding-bottom: 38px;
@@ -1531,6 +1531,10 @@ body.single-product.dewit-mobile-filter-open:not([data-dewit-drawer-open="true"]
 	flex: 0 0 auto;
 	height: 16px;
 	width: 16px;
+}
+
+.site-footer__opening-note {
+	margin-top: 10px !important;
 }
 
 .site-footer .site-footer__phone {

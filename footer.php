@@ -23,13 +23,7 @@
 			<div class="site-footer__contact">
 				<strong>Bezoek ons</strong>
 				<p class="site-footer__address"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg><span>Friezenweg 24, 5349 AW Oss</span></p>
-			</div>
-			<div class="site-footer__hours">
-				<strong>Openingstijden</strong>
-				<ul>
-					<li><span>Maandag t/m vrijdag</span><b>07:30–17:00</b></li>
-					<li><span>Zaterdag en zondag</span><b>Gesloten</b></li>
-				</ul>
+				<p class="site-footer__opening-note">Iedere werkdag geopend van 07:30–17:00.</p>
 			</div>
 		</div>
 		<div class="site-footer__bottom">
