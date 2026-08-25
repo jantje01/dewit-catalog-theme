@@ -33,7 +33,6 @@ get_header();
 						<span><?php esc_html_e( '4,7/5 · 31 Google reviews', 'dewit-catalog-theme' ); ?></span>
 					</div>
 					<h1 id="dewit-home-title"><?php esc_html_e( 'Alles voor de bouw op één plek.', 'dewit-catalog-theme' ); ?></h1>
-					<p><?php esc_html_e( 'Ontdek ons assortiment bouwmachines, bouwmaterialen en professioneel materieel.', 'dewit-catalog-theme' ); ?></p>
 					<a class="dewit-home-hero__cta" href="#dewit-home-categories">
 						<?php esc_html_e( 'Bekijk het assortiment', 'dewit-catalog-theme' ); ?>
 						<span aria-hidden="true">→</span>
