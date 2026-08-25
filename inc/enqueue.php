@@ -11,18 +11,23 @@ defined( 'ABSPATH' ) || exit;
  * Enqueue the theme assets and the data required by the catalog UI.
  */
 function dewit_theme_scripts(): void {
+	$style_path    = get_template_directory() . '/assets/css/theme.css';
+	$script_path   = get_template_directory() . '/assets/js/theme.js';
+	$style_version = file_exists( $style_path ) ? (string) filemtime( $style_path ) : DEWIT_THEME_VERSION;
+	$script_version = file_exists( $script_path ) ? (string) filemtime( $script_path ) : DEWIT_THEME_VERSION;
+
 	wp_enqueue_style(
 		'dewit-theme-woocommerce-style',
 		get_template_directory_uri() . '/assets/css/theme.css',
 		array(),
-		DEWIT_THEME_VERSION
+		$style_version
 	);
 
 	wp_enqueue_script(
 		'dewit-theme-woocommerce-script',
 		get_template_directory_uri() . '/assets/js/theme.js',
 		array(),
-		DEWIT_THEME_VERSION,
+		$script_version,
 		true
 	);
 
