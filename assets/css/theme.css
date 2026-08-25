@@ -1122,27 +1122,6 @@ body.dewit-shop-grouped .dewit-catalog-view-switch button.is-active {
 	z-index: 1;
 }
 
-@media (min-width: 901px) {
-	.site-header__inner > .site-branding {
-		justify-content: center;
-		left: 0;
-		padding-left: 0;
-		position: absolute;
-		top: 50%;
-		transform: translateY(-50%);
-		width: 220px;
-	}
-
-	.site-header__inner > .site-header__phone {
-		justify-content: center;
-		position: absolute;
-		right: 0;
-		top: 50%;
-		transform: translateY(-50%);
-		width: 180px;
-	}
-}
-
 @media (max-width: 700px) {
 	.site-header__inner > .catalog-header-search {
 		width: 220px;
