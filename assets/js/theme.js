@@ -42,10 +42,7 @@
 		resetLevels();
 	};
 
-	if (document.body.classList.contains('single-product')) {
-		closeMenu();
-	}
-
+	closeMenu();
 	window.addEventListener('pageshow', closeMenu);
 
 	toggle.addEventListener('click', function () {
