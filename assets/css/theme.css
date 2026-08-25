@@ -5323,7 +5323,14 @@ body.woocommerce-page .dewit-category-bar__panel-inner {
 		right: 0;
 		max-height: calc(100vh - 64px);
 		overflow: auto;
+		width: 100vw;
 		z-index: 49;
+	}
+
+	.dewit-category-bar__inner {
+		margin-inline: 0;
+		max-width: none;
+		width: 100vw;
 	}
 
 	body.single-product .dewit-category-bar {
