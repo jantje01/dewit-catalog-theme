@@ -27,6 +27,15 @@ get_header();
 			<h1><?php echo $parent_term instanceof WP_Term ? esc_html( $parent_term->name ) : esc_html__( 'Productcatalogus', 'dewit-catalog-theme' ); ?></h1>
 		</header>
 		<?php echo dewit_theme_render_grouped_category_products_html( $parent_slug ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+		<section class="dewit-catalog-assistance" aria-labelledby="dewit-catalog-assistance-title">
+			<div>
+				<h2 id="dewit-catalog-assistance-title"><?php esc_html_e( 'Niet gevonden wat je zoekt?', 'dewit-catalog-theme' ); ?></h2>
+				<p><?php esc_html_e( 'Wij denken graag met je mee.', 'dewit-catalog-theme' ); ?></p>
+			</div>
+			<a class="site-header__phone dewit-catalog-assistance__phone" href="tel:+31412634969" aria-label="<?php esc_attr_e( 'Bel ons op 0412 - 63 49 69', 'dewit-catalog-theme' ); ?>">
+				<span aria-hidden="true">☎</span> 0412 - 63 49 69
+			</a>
+		</section>
 	</div>
 </main>
 
