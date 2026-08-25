@@ -1669,18 +1669,18 @@ body.single-product.dewit-mobile-filter-open:not([data-dewit-drawer-open="true"]
 	}
 
 	.site-footer__brand {
-		align-items: flex-start;
+		align-items: center;
 		border-bottom: 0;
 		border-right: 0;
 		padding-bottom: 28px;
 		padding-right: 0;
-		text-align: left;
+		text-align: center;
 	}
 
 	.site-footer__contact {
-		align-items: flex-start;
+		align-items: center;
 		padding-left: 0;
-		text-align: left;
+		text-align: center;
 	}
 
 	.site-footer__brand > strong {
