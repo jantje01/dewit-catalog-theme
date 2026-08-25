@@ -5430,6 +5430,7 @@ body.woocommerce-page .dewit-category-bar__panel-inner {
 		box-sizing: border-box;
 		display: grid;
 		gap: 0;
+		grid-template-columns: minmax(0, 1fr);
 		margin: 0;
 		padding: 8px 16px 20px;
 		width: 100%;
