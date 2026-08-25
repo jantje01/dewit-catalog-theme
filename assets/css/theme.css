@@ -4605,7 +4605,7 @@ body.dewit-shop-grouped .dewit-catalog-shell {
 	gap: 24px;
 	margin: 0 auto;
 	max-width: 1440px;
-	padding: 12px;
+	padding: 0;
 }
 
 .dewit-product__sidebar {
