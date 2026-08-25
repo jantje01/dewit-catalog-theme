@@ -4740,7 +4740,20 @@ body.single-product .dewit-product-page__layout {
 }
 
 body.tax-product_cat .dewit-grid-catalog {
+	flex: 1 0 auto;
 	min-height: 0;
+}
+
+body.tax-product_cat {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+@supports (min-height: 100svh) {
+	body.tax-product_cat {
+		min-height: 100svh;
+	}
 }
 
 .dewit-grid-catalog__inner {
