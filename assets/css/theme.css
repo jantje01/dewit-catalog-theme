@@ -1615,6 +1615,13 @@ body.single-product.dewit-mobile-filter-open:not([data-dewit-drawer-open="true"]
 	}
 }
 
+@media (max-width: 900px) {
+	.site-footer__bottom {
+		border-top: 0;
+		padding-top: 0;
+	}
+}
+
 .woocommerce .woocommerce-breadcrumb {
 	color: var(--color-muted);
 	margin-bottom: 24px;
