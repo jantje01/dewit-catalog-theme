@@ -195,6 +195,7 @@ function dewit_theme_render_category_bar(): void {
 	?>
 	<nav id="dewit-category-bar" class="dewit-category-bar" aria-label="<?php esc_attr_e( 'Productcategorieën', 'dewit-catalog-theme' ); ?>">
 		<div class="container dewit-category-bar__inner">
+			<button class="dewit-category-bar__mobile-close" type="button" aria-label="<?php esc_attr_e( 'Categorieën sluiten', 'dewit-catalog-theme' ); ?>"><span aria-hidden="true">×</span></button>
 			<ul class="dewit-category-bar__list">
 				<?php foreach ( $parents as $parent ) : ?>
 					<?php

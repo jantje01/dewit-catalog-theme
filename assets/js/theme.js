@@ -54,6 +54,12 @@
 	});
 
 	menu.addEventListener('click', function (event) {
+		if (event.target.closest('.dewit-category-bar__mobile-close')) {
+			event.preventDefault();
+			closeMenu();
+			return;
+		}
+
 		const openTrigger = event.target.closest('.dewit-category-bar__root-trigger, .dewit-category-bar__child-trigger');
 
 		if (openTrigger) {
