@@ -332,7 +332,13 @@ img {
 		background-position: 62% center;
 		grid-template-columns: 1fr;
 		margin-bottom: 40px;
-		min-height: 380px;
+		min-height: 340px;
+	}
+
+	.dewit-home-hero__cta {
+		font-size: .9rem;
+		gap: 10px;
+		padding: 11px 16px;
 	}
 
 	.dewit-home-category-grid {
