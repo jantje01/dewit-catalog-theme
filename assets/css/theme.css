@@ -173,6 +173,13 @@ img {
 	letter-spacing: .08em;
 }
 
+.dewit-home-hero__reviews-star-partial {
+	background: linear-gradient(90deg, #f4a900 70%, rgba(255, 255, 255, .42) 70%);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}
+
 .dewit-home-hero__reviews:hover {
 	color: #fff;
 }
