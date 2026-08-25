@@ -4872,9 +4872,10 @@ body.single-product .dewit-product-page__layout {
 
 .dewit-catalog-assistance {
 	align-items: center;
-	background: #003965;
+	background: #fff;
+	border: 1px solid #003965;
 	border-radius: 16px;
-	color: #fff;
+	color: #003965;
 	display: flex;
 	gap: 24px;
 	justify-content: space-between;
@@ -4889,7 +4890,7 @@ body.single-product .dewit-product-page__layout {
 }
 
 .dewit-catalog-assistance p {
-	color: rgba(255, 255, 255, .82);
+	color: #626262;
 	margin: 4px 0 0;
 }
 
