@@ -5348,9 +5348,9 @@ body.woocommerce-page .dewit-category-bar__panel-inner {
 	.site-header__inner {
 		gap: 10px;
 		grid-template-columns: auto minmax(0, 1fr) auto;
-		grid-template-rows: 64px 48px;
-		height: 120px;
-		min-height: 120px;
+		grid-template-rows: 48px 48px;
+		height: 104px;
+		min-height: 104px;
 		padding-block: 4px;
 		row-gap: 0;
 	}
