@@ -1520,6 +1520,19 @@ body.single-product.dewit-mobile-filter-open:not([data-dewit-drawer-open="true"]
 	margin-top: 8px;
 }
 
+.site-footer__address {
+	align-items: center;
+	display: flex;
+	gap: 8px;
+	white-space: nowrap;
+}
+
+.site-footer__address svg {
+	flex: 0 0 auto;
+	height: 16px;
+	width: 16px;
+}
+
 .site-footer .site-footer__phone {
 	color: #151515;
 	justify-self: start;
