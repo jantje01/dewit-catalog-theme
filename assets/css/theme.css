@@ -1935,7 +1935,7 @@ body.single-product.woocommerce div.product div.summary {
 }
 
 .dewit-product-summary {
-	align-self: start;
+	align-self: stretch;
 	background: #fff;
 	display: flex;
 	flex-direction: column;
@@ -1944,9 +1944,11 @@ body.single-product.woocommerce div.product div.summary {
 }
 
 .dewit-product-summary__content {
-	display: grid;
+	display: flex;
+	flex: 1 1 auto;
+	flex-direction: column;
 	gap: 12px;
-	justify-items: start;
+	width: 100%;
 }
 
 .dewit-product-summary .product_title {
@@ -2010,6 +2012,7 @@ body.single-product.woocommerce div.product div.summary {
 	display: flex;
 	gap: 12px;
 	justify-content: space-between;
+	margin-top: auto;
 }
 
 .dewit-product-order-callout__copy {
