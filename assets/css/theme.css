@@ -2012,7 +2012,16 @@ body.single-product.woocommerce div.product div.summary {
 	justify-content: space-between;
 }
 
-.dewit-product-order-callout p {
+.dewit-product-order-callout__copy {
+	display: grid;
+	gap: 2px;
+}
+
+.dewit-product-order-callout__copy strong {
+	color: #8b5900;
+}
+
+.dewit-product-order-callout__copy p {
 	margin: 0;
 }
 
