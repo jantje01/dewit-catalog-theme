@@ -1800,6 +1800,7 @@ body.single-product.woocommerce div.product div.summary {
 .dewit-product-breadcrumb {
 	align-items: center;
 	display: flex;
+	font-size: 12px;
 	flex-wrap: wrap;
 	gap: 8px;
 	margin: 0 0 14px;
@@ -1807,7 +1808,7 @@ body.single-product.woocommerce div.product div.summary {
 
 .dewit-product-breadcrumb a {
 	color: #003965;
-	font-size: 13px;
+	font-size: inherit;
 	font-weight: 800;
 	text-decoration: none;
 }
