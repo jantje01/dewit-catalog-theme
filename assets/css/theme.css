@@ -8,6 +8,7 @@
 
 /* Reserve the same scrollbar gutter on catalog and product routes. */
 html {
+	background: #003965;
 	scrollbar-gutter: stable;
 }
 
@@ -1312,7 +1313,7 @@ body.single-product .site-header .menu-toggle .menu-toggle__bar::after {
 }
 
 html:has(body.single-product) {
-	background: #f5f5f7;
+	background: #003965;
 }
 
 body.single-product {
