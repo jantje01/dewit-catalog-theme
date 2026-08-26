@@ -1994,6 +1994,23 @@ body.single-product.woocommerce div.product div.summary {
 	width: 100%;
 }
 
+.dewit-product-order-callout {
+	align-items: center;
+	display: flex;
+	gap: 12px;
+	justify-content: space-between;
+}
+
+.dewit-product-order-callout p {
+	margin: 0;
+}
+
+.dewit-product-order-callout__phone {
+	flex: 0 0 auto;
+	height: 38px;
+	padding-inline: 14px;
+}
+
 .dewit-product-summary .woocommerce-product-details__short-description {
 	color: #4d4d4d;
 	font-size: 14px;
@@ -2534,6 +2551,11 @@ body.single-product.woocommerce div.product div.summary {
 
 	.dewit-product-summary .product_title {
 		font-size: 1.45rem;
+	}
+
+	.dewit-product-order-callout {
+		align-items: flex-start;
+		flex-direction: column;
 	}
 
 	.dewit-product-actions {
