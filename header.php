@@ -11,6 +11,7 @@
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="format-detection" content="telephone=no">
+	<meta name="theme-color" content="#003965">
 	<?php dewit_theme_print_critical_font_style(); ?>
 	<?php wp_head(); ?>
 </head>
