@@ -1144,7 +1144,7 @@ body.dewit-shop-grouped .dewit-catalog-view-switch button.is-active {
 }
 
 @media (min-width: 901px) {
-	.site-header__phone {
+	.site-header .site-header__phone {
 		position: absolute;
 		right: 24px;
 		top: 50%;
