@@ -32,12 +32,21 @@ html {
 }
 
 body {
-	margin: 0;
 	background: var(--color-surface);
 	color: var(--color-ink);
+	display: flex;
+	flex-direction: column;
 	font-family: var(--font-body);
 	font-size: 16px;
 	line-height: 1.6;
+	margin: 0;
+	min-height: 100vh;
+}
+
+@supports (min-height: 100svh) {
+	body {
+		min-height: 100svh;
+	}
 }
 
 body.theme-dewit-theme-woocommerce.elementor-template-canvas {
@@ -1360,6 +1369,7 @@ body.theme-dewit-theme-woocommerce .dewit-header-category-toggle .menu-toggle__b
 }
 
 .site-main {
+	flex: 1 0 auto;
 	padding-block: 44px 64px;
 }
 
@@ -1486,6 +1496,7 @@ body.single-product.dewit-mobile-filter-open:not([data-dewit-drawer-open="true"]
 .site-footer {
 	background: #003965;
 	color: rgba(255, 255, 255, 0.78);
+	flex: 0 0 auto;
 	margin-top: 0;
 	padding-block: 46px 18px;
 }
