@@ -181,7 +181,7 @@ img {
 }
 
 .dewit-home-hero__reviews-star-partial {
-	background: linear-gradient(90deg, #f4a900 70%, rgba(255, 255, 255, .42) 70%);
+	background: linear-gradient(90deg, #f4a900 62%, rgba(255, 255, 255, .42) 62%);
 	-webkit-background-clip: text;
 	background-clip: text;
 	color: transparent;
