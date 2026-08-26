@@ -1809,6 +1809,7 @@ body.single-product.woocommerce div.product div.summary {
 
 .dewit-product-breadcrumb {
 	align-items: center;
+	color: #9ba4ad;
 	display: flex;
 	font-size: 12px;
 	flex-wrap: wrap;
@@ -1817,10 +1818,16 @@ body.single-product.woocommerce div.product div.summary {
 }
 
 .dewit-product-breadcrumb a {
-	color: #003965;
+	color: #9ba4ad;
 	font-size: inherit;
 	font-weight: 800;
 	text-decoration: none;
+	transition: color 0.18s ease;
+}
+
+.dewit-product-breadcrumb a:hover,
+.dewit-product-breadcrumb a:focus-visible {
+	color: #f4a900;
 }
 
 .dewit-product-breadcrumb a:hover {
