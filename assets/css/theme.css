@@ -5739,6 +5739,18 @@ body.woocommerce-page .dewit-category-bar__panel-inner {
 		width: 48px;
 	}
 
+	.dewit-category-bar a,
+	.dewit-category-bar button {
+		-webkit-tap-highlight-color: transparent;
+	}
+
+	.dewit-category-bar__link:active,
+	.dewit-category-bar__mobile-level-trigger:active,
+	.dewit-category-bar__root-trigger:active,
+	.dewit-category-bar__child-trigger:active {
+		background: #eef4f8;
+	}
+
 	.dewit-category-bar__panel,
 	.dewit-category-bar__item:hover > .dewit-category-bar__panel,
 	.dewit-category-bar__item.is-open > .dewit-category-bar__panel {
