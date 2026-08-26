@@ -33,7 +33,7 @@ html {
 }
 
 body {
-	background: var(--color-surface);
+	background: #003965;
 	color: var(--color-ink);
 	display: flex;
 	flex-direction: column;
@@ -1370,6 +1370,7 @@ body.theme-dewit-theme-woocommerce .dewit-header-category-toggle .menu-toggle__b
 }
 
 .site-main {
+	background: var(--color-surface);
 	flex: 1 0 auto;
 	padding-block: 44px 64px;
 }
