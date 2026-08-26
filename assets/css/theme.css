@@ -5852,3 +5852,39 @@ body.woocommerce-page .dewit-category-bar__panel-inner {
 		font-size: 17px !important;
 	}
 }
+
+/* Desktop header: keep the search field centered and balance both side zones. */
+@media (min-width: 901px) {
+	.site-header__inner {
+		gap: 0;
+		grid-template-columns: minmax(160px, 1fr) minmax(0, clamp(400px, calc(100% - 320px), 700px)) minmax(160px, 1fr);
+	}
+
+	.site-header .site-branding {
+		grid-column: 1;
+		justify-content: center;
+		padding-left: 0;
+		width: auto;
+	}
+
+	.site-header__inner > .catalog-header-search {
+		grid-column: 2;
+		grid-row: 1;
+		inset: auto;
+		margin: 0;
+		max-width: none;
+		position: relative;
+		transform: none;
+		width: 100%;
+	}
+
+	.site-header .site-header__phone {
+		grid-column: 3;
+		grid-row: 1;
+		justify-self: center;
+		position: relative;
+		right: auto;
+		top: auto;
+		transform: none;
+	}
+}
