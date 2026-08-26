@@ -1144,10 +1144,6 @@ body.dewit-shop-grouped .dewit-catalog-view-switch button.is-active {
 }
 
 @media (min-width: 901px) {
-	.site-header .site-branding {
-		padding-left: 72px;
-	}
-
 	.site-header .site-header__phone {
 		position: absolute;
 		right: 24px;
