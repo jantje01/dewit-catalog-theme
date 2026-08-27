@@ -5931,13 +5931,16 @@ body.woocommerce-page .dewit-category-bar__panel-inner {
 
 	.dewit-category-bar__panel-inner > ul > li > a {
 		color: #151515;
+		display: block;
 		font-size: .92rem;
 		font-weight: 800;
+		line-height: 1.25;
+		margin-bottom: 7px;
 		padding: 0;
 	}
 
 	.dewit-category-bar__panel-inner > ul > li > ul {
-		margin: 8px 0 0;
+		margin: 0;
 		padding: 0;
 	}
 
@@ -5946,7 +5949,8 @@ body.woocommerce-page .dewit-category-bar__panel-inner {
 	}
 
 	.dewit-category-bar__panel-inner > ul > li > ul li a {
-		line-height: 1.2;
+		font-size: 12px;
+		line-height: 1.3;
 		padding-block: 1px;
 	}
 
