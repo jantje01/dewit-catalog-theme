@@ -324,6 +324,10 @@ img {
 	padding-block: 1px;
 }
 
+.dewit-home-subcategory-list ul a:hover {
+	color: var(--color-accent);
+}
+
 .dewit-home-subcategory-list small {
 	color: #9a9a9a;
 	font-size: .72rem;
