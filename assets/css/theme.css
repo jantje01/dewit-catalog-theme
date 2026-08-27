@@ -102,7 +102,7 @@ img {
 	background-image:
 		linear-gradient(90deg, rgba(0, 57, 101, .58) 0%, rgba(0, 57, 101, .22) 100%),
 		image-set(
-			url("../images/hero.avif") type("image/avif"),
+			url("https://shop.dewitbouwmachines.nl/wp-content/uploads/2026/08/cut-scaled.avif") type("image/avif"),
 			url("../images/hero.webp") type("image/webp"),
 			url("../images/hero.jpeg") type("image/jpeg")
 		);
