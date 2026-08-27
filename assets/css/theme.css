@@ -5942,7 +5942,12 @@ body.woocommerce-page .dewit-category-bar__panel-inner {
 	}
 
 	.dewit-category-bar__panel-inner > ul > li > ul li + li {
-		margin-top: 2px;
+		margin-top: 0;
+	}
+
+	.dewit-category-bar__panel-inner > ul > li > ul li a {
+		line-height: 1.2;
+		padding-block: 1px;
 	}
 
 	.dewit-category-bar__panel-inner > ul li a:hover {
