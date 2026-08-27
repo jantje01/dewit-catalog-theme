@@ -61,8 +61,6 @@ function dewit_theme_print_critical_font_style(): void {
 function dewit_theme_get_social_locale(): string {
 	return 'nl_NL';
 }
-add_filter( 'wpseo_locale', 'dewit_theme_get_social_locale', 20 );
-add_filter( 'wpseo_og_locale', 'dewit_theme_get_social_locale', 20 );
 
 function dewit_theme_get_default_shop_url(): string {
 	return add_query_arg( 'dewit_parent_cat', sanitize_title( DEWIT_DEFAULT_PARENT_CATEGORY_SLUG ), home_url( '/' ) );
@@ -193,7 +191,7 @@ function dewit_theme_redirect_product_tag_archives(): void {
 add_action( 'template_redirect', 'dewit_theme_redirect_product_tag_archives', 1 );
 
 function dewit_theme_noindex_product_tag_archives( array $robots ): array {
-	if ( ! dewit_theme_is_product_tag_archive() ) {
+	if ( dewit_theme_has_yoast_seo() || ! dewit_theme_is_product_tag_archive() ) {
 		return $robots;
 	}
 
@@ -204,24 +202,6 @@ function dewit_theme_noindex_product_tag_archives( array $robots ): array {
 	return $robots;
 }
 add_filter( 'wp_robots', 'dewit_theme_noindex_product_tag_archives', 20 );
-
-function dewit_theme_noindex_product_tag_archives_for_yoast( string $robots ): string {
-	if ( ! dewit_theme_is_product_tag_archive() ) {
-		return $robots;
-	}
-
-	return 'noindex, follow';
-}
-add_filter( 'wpseo_robots', 'dewit_theme_noindex_product_tag_archives_for_yoast', 20 );
-
-function dewit_theme_exclude_product_tags_from_yoast_sitemap( bool $exclude, string $taxonomy ): bool {
-	if ( 'product_tag' === $taxonomy ) {
-		return true;
-	}
-
-	return $exclude;
-}
-add_filter( 'wpseo_sitemap_exclude_taxonomy', 'dewit_theme_exclude_product_tags_from_yoast_sitemap', 20, 2 );
 
 function dewit_theme_disable_emoji_assets(): void {
 	remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
@@ -234,8 +214,8 @@ function dewit_theme_disable_emoji_assets(): void {
 }
 add_action( 'init', 'dewit_theme_disable_emoji_assets' );
 
-function dewit_theme_has_external_og_locale_provider(): bool {
-	return defined( 'WPSEO_VERSION' ) || class_exists( 'WPSEO_Frontend' );
+function dewit_theme_has_yoast_seo(): bool {
+	return defined( 'WPSEO_VERSION' ) || function_exists( 'YoastSEO' ) || class_exists( 'WPSEO_Frontend' );
 }
 
 function dewit_theme_is_shop_seo_context(): bool {
@@ -257,7 +237,7 @@ function dewit_theme_is_shop_seo_context(): bool {
 }
 
 function dewit_theme_print_shop_meta_description(): void {
-	if ( ! dewit_theme_is_shop_seo_context() ) {
+	if ( dewit_theme_has_yoast_seo() || ! dewit_theme_is_shop_seo_context() ) {
 		return;
 	}
 
@@ -269,7 +249,7 @@ function dewit_theme_print_shop_meta_description(): void {
 add_action( 'wp_head', 'dewit_theme_print_shop_meta_description', 2 );
 
 function dewit_theme_print_shop_social_meta(): void {
-	if ( ! dewit_theme_is_shop_seo_context() ) {
+	if ( dewit_theme_has_yoast_seo() || ! dewit_theme_is_shop_seo_context() ) {
 		return;
 	}
 
@@ -278,9 +258,7 @@ function dewit_theme_print_shop_social_meta(): void {
 	$image_url   = DEWIT_SHOP_SOCIAL_IMAGE_URL;
 	$page_url    = home_url( add_query_arg( null, null ) );
 
-	if ( ! dewit_theme_has_external_og_locale_provider() ) {
-		printf( '<meta property="og:locale" content="%s">' . "\n", esc_attr( dewit_theme_get_social_locale() ) );
-	}
+	printf( '<meta property="og:locale" content="%s">' . "\n", esc_attr( dewit_theme_get_social_locale() ) );
 	printf( '<meta property="og:type" content="website">' . "\n" );
 	printf( '<meta property="og:title" content="%s">' . "\n", esc_attr( $title ) );
 	printf( '<meta property="og:description" content="%s">' . "\n", esc_attr( $description ) );
@@ -295,7 +273,7 @@ function dewit_theme_print_shop_social_meta(): void {
 add_action( 'wp_head', 'dewit_theme_print_shop_social_meta', 3 );
 
 function dewit_theme_filter_shop_document_title( array $parts ): array {
-	if ( ! dewit_theme_is_shop_seo_context() ) {
+	if ( dewit_theme_has_yoast_seo() || ! dewit_theme_is_shop_seo_context() ) {
 		return $parts;
 	}
 
@@ -307,7 +285,7 @@ function dewit_theme_filter_shop_document_title( array $parts ): array {
 add_filter( 'document_title_parts', 'dewit_theme_filter_shop_document_title', 20 );
 
 function dewit_theme_filter_shop_document_title_text( string $title ): string {
-	if ( ! dewit_theme_is_shop_seo_context() ) {
+	if ( dewit_theme_has_yoast_seo() || ! dewit_theme_is_shop_seo_context() ) {
 		return $title;
 	}
 
