@@ -5893,3 +5893,59 @@ body.woocommerce-page .dewit-category-bar__panel-inner {
 		font-size: 17px !important;
 	}
 }
+
+/* Desktop mega menu: quiet multi-column directory with level-one headings. */
+@media (min-width: 901px) {
+	.dewit-category-bar__panel {
+		box-shadow: 0 14px 28px rgba(0, 28, 52, .1);
+	}
+
+	.dewit-category-bar__panel-heading {
+		display: none;
+	}
+
+	.dewit-category-bar__panel-inner {
+		max-width: 1500px;
+		padding: 28px 28px 32px;
+	}
+
+	.dewit-category-bar__panel-inner > ul {
+		column-count: 3;
+		column-gap: 42px;
+		display: block;
+	}
+
+	.dewit-category-bar__panel-inner > ul > li {
+		break-inside: avoid;
+		margin: 0 0 24px;
+	}
+
+	.dewit-category-bar__panel-inner > ul li a,
+	.dewit-category-bar__panel-inner > ul > li > ul li a {
+		border-left: 0;
+		color: #303030;
+		font-size: .84rem;
+		font-weight: 500;
+		padding: 2px 0;
+	}
+
+	.dewit-category-bar__panel-inner > ul > li > a {
+		color: #151515;
+		font-size: .92rem;
+		font-weight: 800;
+		padding: 0;
+	}
+
+	.dewit-category-bar__panel-inner > ul > li > ul {
+		margin: 8px 0 0;
+		padding: 0;
+	}
+
+	.dewit-category-bar__panel-inner > ul > li > ul li + li {
+		margin-top: 2px;
+	}
+
+	.dewit-category-bar__panel-inner > ul li a:hover {
+		color: #f4a900;
+	}
+}
