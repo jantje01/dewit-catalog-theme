@@ -1106,7 +1106,7 @@ body.dewit-shop-grouped .dewit-catalog-view-switch button.is-active {
 .site-branding .custom-logo {
 	display: block;
 	height: auto;
-	max-height: 38px;
+	max-height: 40px;
 	width: auto;
 }
 
@@ -1262,7 +1262,7 @@ body.single-product .site-branding {
 }
 
 body.single-product .site-branding .custom-logo {
-	max-height: 38px;
+	max-height: 40px;
 }
 
 body.single-product .main-navigation a {
@@ -5499,7 +5499,7 @@ body.single-product .site-branding {
 }
 
 body.single-product .site-branding .custom-logo {
-	max-height: 38px;
+	max-height: 40px;
 }
 
 body.single-product .site-header .menu-toggle {
