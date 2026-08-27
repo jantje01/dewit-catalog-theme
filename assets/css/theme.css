@@ -5279,6 +5279,7 @@ body.woocommerce-page .site-header .site-header__mega-menu {
 .dewit-category-bar {
 	background: #fff;
 	border-bottom: 1px solid #d7dce1;
+	box-shadow: 0 4px 10px rgba(0, 28, 52, .07);
 	position: sticky;
 	top: 72px;
 	z-index: 49;
