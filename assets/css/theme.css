@@ -292,7 +292,7 @@ img {
 }
 
 .dewit-home-subcategory-list a:hover {
-	color: var(--color-header-blue);
+	color: #f4a900;
 }
 
 .dewit-home-subcategory-list > li > a {
