@@ -324,8 +324,9 @@ img {
 	padding-block: 1px;
 }
 
-.dewit-home-subcategory-list ul a:hover {
-	color: var(--color-accent);
+.dewit-home-subcategory-list ul a:hover,
+.dewit-home-subcategory-list ul a:focus-visible {
+	color: #f4a900 !important;
 }
 
 .dewit-home-subcategory-list small {
