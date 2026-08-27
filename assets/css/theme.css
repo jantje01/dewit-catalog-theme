@@ -238,7 +238,7 @@ img {
 .dewit-home-category-group > .dewit-home-category-card {
 	background: var(--color-header-blue);
 	color: #fff;
-	padding-block: 16px;
+	padding-block: 13px;
 }
 
 .dewit-home-category-card span {
