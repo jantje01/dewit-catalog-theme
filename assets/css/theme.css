@@ -5898,10 +5898,6 @@ body.woocommerce-page .dewit-category-bar__panel-inner {
 @media (min-width: 901px) {
 	.dewit-category-bar__panel {
 		box-shadow: 0 14px 28px rgba(0, 28, 52, .1);
-		left: 50%;
-		right: auto;
-		transform: translateX(-50%);
-		width: min(1440px, 100%);
 	}
 
 	.dewit-category-bar__panel-heading {
@@ -5909,7 +5905,7 @@ body.woocommerce-page .dewit-category-bar__panel-inner {
 	}
 
 	.dewit-category-bar__panel-inner {
-		max-width: 1440px;
+		max-width: 1500px;
 		padding: 28px 28px 32px;
 	}
 
