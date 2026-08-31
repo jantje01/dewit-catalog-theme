@@ -597,7 +597,7 @@
 
 		input.type = 'search';
 		input.name = 's';
-		input.placeholder = 'Zoeken naar producten';
+		input.placeholder = 'Zoek';
 		input.value = params.get('s') || '';
 
 		button.type = 'submit';

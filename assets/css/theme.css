@@ -5643,6 +5643,14 @@ body.woocommerce-page .dewit-category-bar__panel-inner {
 		width: 100% !important;
 	}
 
+	.site-header__inner > .catalog-header-search button {
+		order: -1;
+	}
+
+	.site-header__inner > .catalog-header-search input[type="search"] {
+		order: 1;
+	}
+
 	.dewit-category-bar {
 		background: #fff;
 		display: none;

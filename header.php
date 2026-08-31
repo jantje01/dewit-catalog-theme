@@ -43,7 +43,7 @@
 
 		<form class="catalog-header-search" role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
 			<label class="screen-reader-text" for="dewit-header-search"><?php esc_html_e( 'Zoeken naar producten', 'dewit-catalog-theme' ); ?></label>
-			<input id="dewit-header-search" type="search" name="s" placeholder="<?php esc_attr_e( 'Zoeken naar producten', 'dewit-catalog-theme' ); ?>" value="<?php echo esc_attr( get_search_query() ); ?>">
+			<input id="dewit-header-search" type="search" name="s" placeholder="<?php esc_attr_e( 'Zoek', 'dewit-catalog-theme' ); ?>" value="<?php echo esc_attr( get_search_query() ); ?>">
 			<input type="hidden" name="post_type" value="product">
 			<?php $header_parent_category = dewit_theme_get_current_parent_category_slug(); ?>
 			<?php if ( '' !== $header_parent_category ) : ?>
