@@ -202,7 +202,6 @@ function dewit_theme_render_category_bar(): void {
 		<div class="container dewit-category-bar__inner">
 			<div class="dewit-category-bar__mobile-header">
 				<button class="dewit-category-bar__mobile-close" type="button" aria-label="<?php esc_attr_e( 'Categorieën sluiten', 'dewit-catalog-theme' ); ?>"><span aria-hidden="true">×</span></button>
-				<strong><?php esc_html_e( 'Menu', 'dewit-catalog-theme' ); ?></strong>
 				<a class="dewit-category-bar__mobile-contact" href="tel:+31412634969" aria-label="<?php esc_attr_e( 'Bel De Wit Bouwmachines', 'dewit-catalog-theme' ); ?>">
 					<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6.6 10.8c1.5 3 3.9 5.4 6.9 6.9l2.3-2.3a1 1 0 0 1 1-.24c1.1.36 2.26.54 3.45.54a1 1 0 0 1 1 1V21a1 1 0 0 1-1 1C10.7 22 2 13.3 2 2.8a1 1 0 0 1 1-1H7.3a1 1 0 0 1 1 1c0 1.19.18 2.35.54 3.45a1 1 0 0 1-.24 1Z"/></svg>
 				</a>
