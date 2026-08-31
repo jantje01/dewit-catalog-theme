@@ -5617,6 +5617,7 @@ body.woocommerce-page .dewit-category-bar__panel-inner {
 	}
 
 	.site-header {
+		box-shadow: 0 4px 10px rgba(0, 28, 52, .07);
 		padding-bottom: 0;
 	}
 
