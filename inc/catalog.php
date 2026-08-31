@@ -207,15 +207,6 @@ function dewit_theme_render_category_bar(): void {
 					<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6.6 10.8c1.5 3 3.9 5.4 6.9 6.9l2.3-2.3a1 1 0 0 1 1-.24c1.1.36 2.26.54 3.45.54a1 1 0 0 1 1 1V21a1 1 0 0 1-1 1C10.7 22 2 13.3 2 2.8a1 1 0 0 1 1-1H7.3a1 1 0 0 1 1 1c0 1.19.18 2.35.54 3.45a1 1 0 0 1-.24 1Z"/></svg>
 				</a>
 			</div>
-			<form class="dewit-category-bar__mobile-search catalog-header-search" role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-				<label class="screen-reader-text" for="dewit-mobile-menu-search">Zoeken naar producten</label>
-				<input id="dewit-mobile-menu-search" type="search" name="s" placeholder="<?php esc_attr_e( 'Zoeken naar producten', 'dewit-catalog-theme' ); ?>" value="<?php echo esc_attr( get_search_query() ); ?>">
-				<input type="hidden" name="post_type" value="product">
-				<button type="submit" aria-label="<?php esc_attr_e( 'Zoeken', 'dewit-catalog-theme' ); ?>">
-					<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
-				</button>
-				<div class="dewit-shop-search-results" role="region" aria-label="<?php esc_attr_e( 'Directe zoekresultaten', 'dewit-catalog-theme' ); ?>"></div>
-			</form>
 			<ul class="dewit-category-bar__list">
 				<?php foreach ( $parents as $parent ) : ?>
 					<?php
