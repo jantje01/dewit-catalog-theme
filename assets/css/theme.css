@@ -5872,9 +5872,13 @@ body.woocommerce-page .dewit-category-bar__panel-inner {
 
 	.dewit-category-bar__root-back > span,
 	.dewit-category-bar__child-back > span {
+		align-items: center;
+		display: inline-flex;
 		font-size: 1.45em;
 		font-weight: 400;
+		justify-content: center;
 		line-height: 1;
+		transform: translateY(1px);
 	}
 
 	.dewit-category-bar__panel-inner > ul {
