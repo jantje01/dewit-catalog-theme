@@ -5900,12 +5900,23 @@ body.woocommerce-page .dewit-category-bar__panel-inner {
 	}
 
 	.dewit-category-bar__panel-inner > ul li a {
+		align-items: center;
 		border-left: 0;
 		border-bottom: 1px solid #edf0f2;
 		box-sizing: border-box;
+		display: flex;
+		justify-content: flex-start;
 		min-height: 56px;
 		padding: 13px 16px;
+		text-align: left;
 		width: 100%;
+	}
+
+	.dewit-category-bar__panel-inner > ul > li > .dewit-category-bar__mobile-level-trigger {
+		align-items: center;
+		justify-content: flex-start;
+		padding: 13px 52px 13px 16px;
+		text-align: left;
 	}
 
 	.dewit-category-bar__panel-inner > ul li > .dewit-category-bar__desktop-category-link {
