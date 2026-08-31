@@ -5538,6 +5538,25 @@ body.woocommerce-page .dewit-category-bar__panel-inner {
 	grid-template-columns: auto 1fr auto;
 }
 
+@media (min-width: 901px) {
+	.site-header__inner {
+		display: flex;
+		justify-content: space-evenly;
+	}
+
+	.site-header__inner > .catalog-header-search {
+		left: auto;
+		margin-inline: 0;
+		position: static;
+		width: min(700px, 58vw);
+	}
+
+	.site-header .site-header__phone {
+		position: static;
+		transform: none;
+	}
+}
+
 /* Mobile navigation: replace the wide category mega menu with a hamburger panel. */
 @media (max-width: 900px) {
 	.site-header__inner {
