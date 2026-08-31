@@ -5938,6 +5938,7 @@ body.woocommerce-page .dewit-category-bar__panel-inner {
 	.dewit-category-bar__panel-inner > ul > li > ul li a {
 		align-items: center;
 		display: flex;
+		font-size: 1rem;
 		min-height: 56px;
 		padding: 13px 16px;
 	}
