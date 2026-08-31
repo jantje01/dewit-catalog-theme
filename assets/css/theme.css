@@ -5644,11 +5644,14 @@ body.woocommerce-page .dewit-category-bar__panel-inner {
 	}
 
 	.site-header__inner > .catalog-header-search button {
+		padding-inline: 8px;
 		order: -1;
+		width: 44px;
 	}
 
 	.site-header__inner > .catalog-header-search input[type="search"] {
 		order: 1;
+		padding-inline: 8px;
 	}
 
 	.dewit-category-bar {
