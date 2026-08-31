@@ -5838,9 +5838,9 @@ body.woocommerce-page .dewit-category-bar__panel-inner {
 		align-items: center;
 		display: flex;
 		flex-direction: column;
-		gap: 6px;
-		padding: 8px 0 16px;
-		align-items: flex-start;
+		gap: 0;
+		padding: 0;
+		width: 100%;
 	}
 
 	.dewit-category-bar__mobile-heading strong {
@@ -5859,9 +5859,15 @@ body.woocommerce-page .dewit-category-bar__panel-inner {
 		font: inherit;
 		font-size: 1.25rem;
 		font-weight: 700;
-		gap: 6px;
-		padding: 8px 0;
+		gap: 10px;
+		justify-content: flex-start;
 		line-height: 1.2;
+		min-height: 56px;
+		padding: 12px 16px;
+		text-align: left;
+		width: 100%;
+		box-sizing: border-box;
+		border-bottom: 1px solid #edf0f2;
 	}
 
 	.dewit-category-bar__root-back > span,
