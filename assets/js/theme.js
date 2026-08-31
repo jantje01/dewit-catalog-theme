@@ -34,6 +34,27 @@
 		menu.querySelectorAll('[aria-expanded="true"]').forEach(function (trigger) {
 			trigger.setAttribute('aria-expanded', 'false');
 		});
+
+		menu.querySelectorAll('.dewit-category-bar__panel').forEach(resetPanelHeading);
+	};
+
+	const getItemLabel = function (item) {
+		const label = item ? item.querySelector(':scope > .dewit-category-bar__mobile-level-trigger, :scope > .dewit-category-bar__link, :scope > a') : null;
+		return label ? label.textContent.trim() : '';
+	};
+
+	const setPanelHeading = function (panel, label) {
+		const heading = panel ? panel.querySelector('.dewit-category-bar__back-label') : null;
+		if (heading && label) {
+			heading.textContent = label;
+		}
+	};
+
+	const resetPanelHeading = function (panel) {
+		const backButton = panel ? panel.querySelector('.dewit-category-bar__root-back') : null;
+		if (backButton) {
+			setPanelHeading(panel, backButton.dataset.rootLabel || '');
+		}
 	};
 
 	const closeMenu = function () {
@@ -72,6 +93,7 @@
 				list.classList.add('is-mobile-submenu');
 				item.classList.add('is-mobile-active');
 				openTrigger.setAttribute('aria-expanded', 'true');
+				setPanelHeading(openTrigger.closest('.dewit-category-bar__panel'), getItemLabel(item));
 			}
 			return;
 		}
@@ -93,8 +115,11 @@
 					if (nestedTrigger) {
 						nestedTrigger.setAttribute('aria-expanded', 'false');
 					}
+					setPanelHeading(panel, getItemLabel(nestedList.closest('li')));
 					return;
 				}
+
+				resetPanelHeading(panel);
 			}
 
 			const item = backTrigger.closest('li');
@@ -107,6 +132,7 @@
 				if (trigger) {
 					trigger.setAttribute('aria-expanded', 'false');
 				}
+				setPanelHeading(backTrigger.closest('.dewit-category-bar__panel'), getItemLabel(list.closest('li')));
 			}
 			return;
 		}

@@ -232,7 +232,7 @@ function dewit_theme_render_category_bar(): void {
 							<button class="dewit-category-bar__root-trigger" type="button" aria-expanded="false" aria-label="<?php echo esc_attr( sprintf( __( '%s openen', 'dewit-catalog-theme' ), $parent->name ) ); ?>"><span aria-hidden="true">›</span></button>
 							<div class="dewit-category-bar__panel">
 								<div class="dewit-category-bar__panel-inner">
-									<div class="dewit-category-bar__mobile-heading"><button class="dewit-category-bar__root-back" type="button"><span class="dewit-category-bar__back-arrow" aria-hidden="true">‹</span><span class="dewit-category-bar__back-label"><?php echo esc_html( $parent->name ); ?></span></button></div>
+									<div class="dewit-category-bar__mobile-heading"><button class="dewit-category-bar__root-back" type="button" data-root-label="<?php echo esc_attr( $parent->name ); ?>"><span class="dewit-category-bar__back-arrow" aria-hidden="true">‹</span><span class="dewit-category-bar__back-label"><?php echo esc_html( $parent->name ); ?></span></button></div>
 							<ul>
 								<?php dewit_theme_render_category_bar_children( $parent->term_id ); ?>
 							</ul>
