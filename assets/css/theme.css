@@ -5635,7 +5635,7 @@ body.woocommerce-page .dewit-category-bar__panel-inner {
 		margin: 0;
 		max-width: none;
 		min-width: 0;
-		padding: 0 12px;
+		padding: 0 8px;
 		position: relative;
 		right: auto;
 		top: auto;
@@ -5644,14 +5644,14 @@ body.woocommerce-page .dewit-category-bar__panel-inner {
 	}
 
 	.site-header__inner > .catalog-header-search button {
-		padding-inline: 8px;
+		padding-inline: 4px;
 		order: -1;
-		width: 44px;
+		width: 36px;
 	}
 
 	.site-header__inner > .catalog-header-search input[type="search"] {
 		order: 1;
-		padding-inline: 8px;
+		padding-inline: 4px;
 	}
 
 	.dewit-category-bar {
