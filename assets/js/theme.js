@@ -40,6 +40,7 @@
 		document.documentElement.classList.remove('dewit-mobile-menu-open');
 		document.body.classList.remove('dewit-mobile-menu-open');
 		toggle.setAttribute('aria-expanded', 'false');
+		toggle.setAttribute('aria-label', 'Categorieën openen');
 		resetLevels();
 	};
 
@@ -50,6 +51,7 @@
 		const isOpen = document.body.classList.toggle('dewit-mobile-menu-open');
 		document.documentElement.classList.toggle('dewit-mobile-menu-open', isOpen);
 		toggle.setAttribute('aria-expanded', String(isOpen));
+		toggle.setAttribute('aria-label', isOpen ? 'Categorieën sluiten' : 'Categorieën openen');
 	});
 
 	menu.addEventListener('click', function (event) {
