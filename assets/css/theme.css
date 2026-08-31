@@ -635,7 +635,12 @@ body.dewit-shop-grouped .site-header {
 	flex: 0 0 auto;
 	font-size: 24px;
 	height: 100%;
+	order: -1;
 	padding: 0 15px;
+}
+
+.catalog-header-search input[type="search"] {
+	order: 1;
 }
 
 .catalog-header-search button svg {
