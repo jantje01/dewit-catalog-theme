@@ -5905,11 +5905,19 @@ body.woocommerce-page .dewit-category-bar__panel-inner {
 		border-bottom: 1px solid #edf0f2;
 		box-sizing: border-box;
 		display: flex;
+		font-size: .95rem;
 		justify-content: flex-start;
+		line-height: 1.35;
 		min-height: 56px;
 		padding: 13px 16px;
 		text-align: left;
 		width: 100%;
+	}
+
+	.dewit-category-bar__link,
+	.dewit-category-bar__mobile-level-trigger {
+		font-size: .95rem;
+		line-height: 1.35;
 	}
 
 	.dewit-category-bar__panel-inner > ul > li > .dewit-category-bar__mobile-level-trigger {
