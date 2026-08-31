@@ -202,6 +202,17 @@ function dewit_theme_render_category_bar(): void {
 		<div class="container dewit-category-bar__inner">
 			<div class="dewit-category-bar__mobile-header">
 				<button class="dewit-category-bar__mobile-close" type="button" aria-label="<?php esc_attr_e( 'Categorieën sluiten', 'dewit-catalog-theme' ); ?>"><span aria-hidden="true">×</span></button>
+				<div class="dewit-category-bar__mobile-logo">
+					<?php
+					if ( has_custom_logo() ) {
+						the_custom_logo();
+					} else {
+						?>
+						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
+						<?php
+					}
+					?>
+				</div>
 			</div>
 			<ul class="dewit-category-bar__list">
 				<?php foreach ( $parents as $parent ) : ?>

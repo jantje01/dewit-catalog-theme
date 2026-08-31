@@ -5678,7 +5678,7 @@ body.woocommerce-page .dewit-category-bar__panel-inner {
 		background: transparent;
 		border: 0;
 		border-radius: 0;
-		color: #003965;
+		color: #fff;
 		display: inline-flex;
 		font-size: 2.2rem;
 		height: 48px;
@@ -5690,11 +5690,36 @@ body.woocommerce-page .dewit-category-bar__panel-inner {
 
 	.dewit-category-bar__mobile-header {
 		align-items: center;
-		border-bottom: 1px solid #e5e5e5;
+		background: #003965;
+		border-bottom: 1px solid #003965;
 		display: flex;
-		justify-content: space-evenly;
+		justify-content: flex-start;
 		min-height: 64px;
 		padding: 8px 16px;
+		width: 100%;
+	}
+
+	.dewit-category-bar__mobile-logo {
+		align-items: center;
+		display: flex;
+		margin-left: 8px;
+	}
+
+	.dewit-category-bar__mobile-logo .custom-logo-link,
+	.dewit-category-bar__mobile-logo > a {
+		align-items: center;
+		color: #fff;
+		display: inline-flex;
+		font-size: 1.1rem;
+		font-weight: 800;
+		text-decoration: none;
+	}
+
+	.dewit-category-bar__mobile-logo .custom-logo {
+		height: auto;
+		max-height: 34px;
+		max-width: 150px;
+		width: auto;
 	}
 
 	.dewit-category-bar__list {
@@ -5703,7 +5728,7 @@ body.woocommerce-page .dewit-category-bar__panel-inner {
 		gap: 0;
 		grid-template-columns: minmax(0, 1fr);
 		margin: 0;
-		padding: 8px 16px 20px;
+		padding: 8px 0 20px;
 		width: 100%;
 	}
 
@@ -5728,7 +5753,7 @@ body.woocommerce-page .dewit-category-bar__panel-inner {
 		display: flex;
 		justify-content: flex-start;
 		min-height: 56px;
-		padding: 13px 0;
+		padding: 13px 16px;
 		width: 100%;
 	}
 
@@ -5749,7 +5774,7 @@ body.woocommerce-page .dewit-category-bar__panel-inner {
 		font-weight: 700;
 		justify-content: flex-start;
 		min-height: 56px;
-		padding: 13px 52px 13px 0;
+		padding: 13px 52px 13px 16px;
 		text-align: left;
 		width: 100%;
 	}
@@ -5876,7 +5901,7 @@ body.woocommerce-page .dewit-category-bar__panel-inner {
 		border-bottom: 1px solid #edf0f2;
 		box-sizing: border-box;
 		min-height: 56px;
-		padding: 13px 0;
+		padding: 13px 16px;
 		width: 100%;
 	}
 
