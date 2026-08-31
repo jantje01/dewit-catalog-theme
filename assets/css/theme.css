@@ -5555,7 +5555,7 @@ body.woocommerce-page .dewit-category-bar__panel-inner {
 @media (min-width: 901px) {
 	.site-header__inner {
 		display: flex;
-		justify-content: flex-start;
+		justify-content: space-evenly;
 	}
 
 	.site-header__inner > .catalog-header-search {
