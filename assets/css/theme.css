@@ -5665,8 +5665,12 @@ body.woocommerce-page .dewit-category-bar__panel-inner {
 		display: block;
 	}
 
+	html.dewit-mobile-menu-open,
 	body.dewit-mobile-menu-open {
 		overflow: hidden;
+		overflow-x: hidden;
+		overflow-y: hidden;
+		overscroll-behavior: none;
 	}
 
 	.dewit-category-bar__list {

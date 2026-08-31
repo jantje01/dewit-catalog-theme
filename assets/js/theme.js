@@ -37,6 +37,7 @@
 	};
 
 	const closeMenu = function () {
+		document.documentElement.classList.remove('dewit-mobile-menu-open');
 		document.body.classList.remove('dewit-mobile-menu-open');
 		toggle.setAttribute('aria-expanded', 'false');
 		resetLevels();
@@ -47,6 +48,7 @@
 
 	toggle.addEventListener('click', function () {
 		const isOpen = document.body.classList.toggle('dewit-mobile-menu-open');
+		document.documentElement.classList.toggle('dewit-mobile-menu-open', isOpen);
 		toggle.setAttribute('aria-expanded', String(isOpen));
 	});
 
