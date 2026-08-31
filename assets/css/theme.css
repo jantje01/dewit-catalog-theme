@@ -5870,8 +5870,7 @@ body.woocommerce-page .dewit-category-bar__panel-inner {
 		border-bottom: 1px solid #edf0f2;
 	}
 
-	.dewit-category-bar__root-back > span,
-	.dewit-category-bar__child-back > span {
+	.dewit-category-bar__back-arrow {
 		align-items: center;
 		display: inline-flex;
 		font-size: 1.45em;
@@ -5879,6 +5878,12 @@ body.woocommerce-page .dewit-category-bar__panel-inner {
 		justify-content: center;
 		line-height: 1;
 		transform: translateY(1px);
+	}
+
+	.dewit-category-bar__back-label {
+		align-items: center;
+		display: inline-flex;
+		line-height: 1.2;
 	}
 
 	.dewit-category-bar__panel-inner > ul {
