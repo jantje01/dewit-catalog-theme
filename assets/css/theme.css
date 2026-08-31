@@ -5675,6 +5675,11 @@ body.woocommerce-page .dewit-category-bar__panel-inner {
 		z-index: 100;
 	}
 
+	body.admin-bar .dewit-category-bar {
+		top: 150px;
+		height: calc(100dvh - 150px);
+	}
+
 	.dewit-category-bar__inner {
 		background: #fff;
 		margin-inline: 0;
