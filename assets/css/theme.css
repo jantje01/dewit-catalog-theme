@@ -1127,8 +1127,8 @@ body.dewit-shop-grouped .dewit-catalog-view-switch button.is-active {
 .dewit-mobile-menu-toggle__icon {
 	color: #fff;
 	display: block;
-	height: 18px;
-	width: 18px;
+	height: 22px;
+	width: 22px;
 }
 
 .dewit-mobile-menu-toggle__icon--close {
@@ -5595,8 +5595,8 @@ body.woocommerce-page .dewit-category-bar__panel-inner {
 	}
 
 	.dewit-mobile-menu-toggle__icon {
-		height: 18px;
-		width: 18px;
+		height: 22px;
+		width: 22px;
 	}
 
 	.site-branding {
@@ -5914,8 +5914,8 @@ body.woocommerce-page .dewit-category-bar__panel-inner {
 	}
 
 	.dewit-mobile-menu-toggle__icon {
-		height: 16px;
-		width: 16px;
+		height: 20px;
+		width: 20px;
 	}
 }
 
