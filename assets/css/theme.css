@@ -5337,8 +5337,24 @@ body.woocommerce-page .site-header .site-header__mega-menu {
 .dewit-category-bar__link:hover,
 .dewit-category-bar__item.is-open > .dewit-category-bar__link,
 .dewit-category-bar__item:hover > .dewit-category-bar__link {
-	background: #eef4f8;
+	background: transparent;
 	color: #003965;
+}
+
+@media (min-width: 901px) {
+	.dewit-category-bar__item:hover > .dewit-category-bar__link {
+		color: transparent;
+		position: relative;
+	}
+
+	.dewit-category-bar__item:hover > .dewit-category-bar__link::after {
+		color: #003965;
+		content: 'Bekijk categorie';
+		left: 50%;
+		position: absolute;
+		transform: translateX(-50%);
+		white-space: nowrap;
+	}
 }
 
 .dewit-category-bar__trigger {
