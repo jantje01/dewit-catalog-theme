@@ -131,7 +131,7 @@ function dewit_theme_render_category_bar_children( int $parent_id ): void {
 			<?php endif; ?>
 			<?php if ( ! is_wp_error( $grandchildren ) && ! empty( $grandchildren ) ) : ?>
 				<button class="dewit-category-bar__child-trigger" type="button" aria-expanded="false" aria-label="<?php echo esc_attr( sprintf( __( '%s openen', 'dewit-catalog-theme' ), $child->name ) ); ?>"><span aria-hidden="true">›</span></button>
-				<button class="dewit-category-bar__child-back" type="button"><span aria-hidden="true">‹</span> <?php esc_html_e( 'Terug', 'dewit-catalog-theme' ); ?></button>
+				<button class="dewit-category-bar__child-back" type="button"><span aria-hidden="true">‹</span> <?php echo esc_html( $child->name ); ?></button>
 				<ul>
 					<?php dewit_theme_render_category_bar_children( $child->term_id ); ?>
 				</ul>
@@ -232,7 +232,7 @@ function dewit_theme_render_category_bar(): void {
 							<button class="dewit-category-bar__root-trigger" type="button" aria-expanded="false" aria-label="<?php echo esc_attr( sprintf( __( '%s openen', 'dewit-catalog-theme' ), $parent->name ) ); ?>"><span aria-hidden="true">›</span></button>
 							<div class="dewit-category-bar__panel">
 								<div class="dewit-category-bar__panel-inner">
-									<div class="dewit-category-bar__mobile-heading"><button class="dewit-category-bar__root-back" type="button"><span aria-hidden="true">‹</span> <?php esc_html_e( 'Terug', 'dewit-catalog-theme' ); ?></button><strong><?php echo esc_html( $parent->name ); ?></strong></div>
+									<div class="dewit-category-bar__mobile-heading"><button class="dewit-category-bar__root-back" type="button"><span aria-hidden="true">‹</span> <?php echo esc_html( $parent->name ); ?></button></div>
 							<ul>
 								<?php dewit_theme_render_category_bar_children( $parent->term_id ); ?>
 							</ul>

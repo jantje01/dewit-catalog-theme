@@ -5857,10 +5857,11 @@ body.woocommerce-page .dewit-category-bar__panel-inner {
 		color: #003965;
 		display: inline-flex;
 		font: inherit;
-		font-size: .82rem;
+		font-size: 1.25rem;
 		font-weight: 700;
 		gap: 6px;
 		padding: 8px 0;
+		line-height: 1.2;
 	}
 
 	.dewit-category-bar__panel-inner > ul {
