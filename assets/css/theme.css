@@ -5641,7 +5641,7 @@ body.woocommerce-page .dewit-category-bar__panel-inner {
 		height: calc(100dvh - 104px);
 		max-height: none;
 		min-height: 0;
-		overflow: auto;
+		overflow: hidden;
 		width: 100vw;
 		z-index: 100;
 	}
