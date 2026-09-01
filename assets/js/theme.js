@@ -57,7 +57,46 @@
 		}
 	};
 
+	let scrollLockState = null;
+
+	const lockPageScroll = function () {
+		if (scrollLockState) {
+			return;
+		}
+
+		scrollLockState = {
+			scrollY: window.scrollY || window.pageYOffset || 0,
+			htmlOverflow: document.documentElement.style.overflow,
+			bodyOverflow: document.body.style.overflow,
+			bodyPosition: document.body.style.position,
+			bodyTop: document.body.style.top,
+			bodyWidth: document.body.style.width,
+		};
+
+		document.documentElement.style.overflow = 'hidden';
+		document.body.style.overflow = 'hidden';
+		document.body.style.position = 'fixed';
+		document.body.style.top = '-' + scrollLockState.scrollY + 'px';
+		document.body.style.width = '100%';
+	};
+
+	const unlockPageScroll = function () {
+		if (!scrollLockState) {
+			return;
+		}
+
+		const state = scrollLockState;
+		document.documentElement.style.overflow = state.htmlOverflow;
+		document.body.style.overflow = state.bodyOverflow;
+		document.body.style.position = state.bodyPosition;
+		document.body.style.top = state.bodyTop;
+		document.body.style.width = state.bodyWidth;
+		scrollLockState = null;
+		window.scrollTo(0, state.scrollY);
+	};
+
 	const closeMenu = function () {
+		unlockPageScroll();
 		document.documentElement.classList.remove('dewit-mobile-menu-open');
 		document.body.classList.remove('dewit-mobile-menu-open');
 		toggle.setAttribute('aria-expanded', 'false');
@@ -71,6 +110,11 @@
 	toggle.addEventListener('click', function () {
 		const isOpen = document.body.classList.toggle('dewit-mobile-menu-open');
 		document.documentElement.classList.toggle('dewit-mobile-menu-open', isOpen);
+		if (isOpen) {
+			lockPageScroll();
+		} else {
+			unlockPageScroll();
+		}
 		toggle.setAttribute('aria-expanded', String(isOpen));
 		toggle.setAttribute('aria-label', isOpen ? 'Categorieën sluiten' : 'Categorieën openen');
 	});
