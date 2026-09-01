@@ -65,19 +65,12 @@
 		}
 
 		scrollLockState = {
-			scrollY: window.scrollY || window.pageYOffset || 0,
 			htmlOverflow: document.documentElement.style.overflow,
 			bodyOverflow: document.body.style.overflow,
-			bodyPosition: document.body.style.position,
-			bodyTop: document.body.style.top,
-			bodyWidth: document.body.style.width,
 		};
 
 		document.documentElement.style.overflow = 'hidden';
 		document.body.style.overflow = 'hidden';
-		document.body.style.position = 'fixed';
-		document.body.style.top = '-' + scrollLockState.scrollY + 'px';
-		document.body.style.width = '100%';
 	};
 
 	const unlockPageScroll = function () {
@@ -88,12 +81,17 @@
 		const state = scrollLockState;
 		document.documentElement.style.overflow = state.htmlOverflow;
 		document.body.style.overflow = state.bodyOverflow;
-		document.body.style.position = state.bodyPosition;
-		document.body.style.top = state.bodyTop;
-		document.body.style.width = state.bodyWidth;
 		scrollLockState = null;
-		window.scrollTo(0, state.scrollY);
 	};
+
+	const preventPageScroll = function (event) {
+		if (document.documentElement.classList.contains('dewit-mobile-menu-open')) {
+			event.preventDefault();
+		}
+	};
+
+	document.addEventListener('wheel', preventPageScroll, { passive: false });
+	document.addEventListener('touchmove', preventPageScroll, { passive: false });
 
 	const closeMenu = function () {
 		unlockPageScroll();
