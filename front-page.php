@@ -99,6 +99,7 @@ get_header();
 							if ( is_wp_error( $category_url ) ) {
 								$category_url = dewit_theme_get_parent_category_shop_url( $category->slug );
 							}
+							$category_image = dewit_theme_get_product_category_image_data( $category->term_id );
 							$subcategories = get_terms( array(
 								'taxonomy'   => 'product_cat',
 								'parent'     => $category->term_id,
@@ -110,6 +111,9 @@ get_header();
 			<div class="dewit-home-category-group">
 			<a class="dewit-home-category-card" href="<?php echo esc_url( $category_url ); ?>">
 								<span><?php echo esc_html( $category->name ); ?></span>
+								<?php if ( $category_image ) : ?>
+									<img class="dewit-home-category-card__image" src="<?php echo esc_url( $category_image['src'] ); ?>" width="<?php echo esc_attr( $category_image['width'] ); ?>" height="<?php echo esc_attr( $category_image['height'] ); ?>" alt="" aria-hidden="true" loading="lazy">
+								<?php endif; ?>
 								<strong aria-hidden="true">→</strong>
 			</a>
 			<?php if ( ! is_wp_error( $subcategories ) && $subcategories ) : ?>

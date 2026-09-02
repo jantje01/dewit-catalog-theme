@@ -247,6 +247,16 @@ img {
 	grid-column: 1;
 }
 
+.dewit-home-category-card__image {
+	height: 42px;
+	object-fit: contain;
+	position: absolute;
+	right: 42px;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 42px;
+}
+
 .dewit-home-category-card small {
 	color: var(--color-muted);
 	font-size: .76rem;
